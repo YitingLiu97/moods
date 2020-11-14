@@ -1,3 +1,4 @@
+import "./styles.css";
 import { distance, scale, add, sub, angle } from "./vector.js";
 
 let activeElement = null;
@@ -15,7 +16,9 @@ function startAction(ev) {
   let touches = Array.from(ev.touches);
   let firstTouch = touches[0];
   if (firstTouch.target.classList.contains("draggable")) {
-    ev.preventDefault();
+    if (firstTouch.target.tagName === "IMG") {
+      ev.preventDefault();
+    }
     let selectedElement = checkImageCoord(firstTouch.target, ev);
     if (!selectedElement || !selectedElement.classList.contains("draggable")) {
       return;
