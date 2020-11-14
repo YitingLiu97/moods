@@ -1,4 +1,3 @@
-import "./styles.css";
 import { distance, scale, add, sub, angle } from "./vector.js";
 
 let activeElement = null;
