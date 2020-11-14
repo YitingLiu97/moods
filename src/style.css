@@ -1,0 +1,112 @@
+* {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+
+
+}
+
+html,
+body {
+    height: 100vh;
+    height: -webkit-fill-available;
+    /* touch-action: none; */
+
+    /* overflow-y: hidden; */
+}
+
+#title {
+    width: 100vw;
+    height: 10vh;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+}
+
+#canvasWrapper {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    z-index: -100;
+
+}
+
+.draggable {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    filter: drop-shadow(1px 1px 3px white);
+    display: block;
+    user-select: none;
+    margin: 0;
+}
+
+img.draggable {
+    width: 20%;
+}
+
+#canvas {
+    position: absolute;
+
+    /* 
+    width: 95vw;
+    height: 70vh; */
+    border: 1pt red dotted;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    border-radius: 5px;
+
+
+}
+
+#selections {
+    width: 100%;
+    /* padding: 0 2.5vw; */
+    height: 5vh;
+    position: relative;
+    position: fixed;
+    bottom: 2vh;
+    bottom: 20;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    align-self: center;
+}
+
+#selections>button {
+    height: 5vh;
+    width: 100%;
+    /* bottom: 0; */
+}
+
+#choices {
+    width: 95vw;
+    padding: 0 2.5vw;
+    height: 5vh;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    align-self: center;
+}
+
+#choices>button {
+    height: 5vh;
+    width: 100%;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+    width: 100vw;
+    height:2vh;
+    background-color: green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

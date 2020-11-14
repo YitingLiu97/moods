@@ -1,14 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Moods-Diary</title>
-
+    <link rel="stylesheet" href="src/style.css">
 
     <!-- A mood diary that allows you to draw, take picture, and write. Then share to others or keep it a secret to yourself.  -->
 </head>
+
 <body>
+
+    <div id="app"></div>
+
+    <div id="title">
+        <h1 contenteditable>Moods</h1>
+    </div>
+
+    <!-- have to make the object aboslute to be moved -->
+    <div id="canvasWrapper">
+        <canvas id="canvas"></canvas>
+    </div>
+
+
+    <div id="selections">
+        <button id="bg">bg</button>
+        <button id="text">text</button>
+        <button id="draw">draw</button>
+        <button id="save">save</button>
+
+    </div>
+    <!--  
     
+    <div id="choices">
+        <button id="back">back</button>
+        <button id="save">save</button>
+        <button id="clear">clear</button>
+        <button id="trash">trash</button>
+    </div>
+    -->
+    <footer>
+        <p>proudly created by Yiting Liu.</p>
+    </footer>
+    <script type="module" src="src/js/main.js"></script>
+    <!-- <script type="module"src="src/js/main.js"></script> -->
+
 </body>
+
+<!-- 
+Bare minimum
+1. upload one image in canvas - distort the image - effects and panning and resizing 
+2. type 
+3. draw on to the canvas 
+4. save everything
+5. make everything moveable 
+ -->
+
 </html>
