@@ -35,7 +35,7 @@ let text = document.getElementById("text");
 let draw = document.getElementById("draw");
 let save = document.getElementById("save");
 let trash = document.getElementById("trash");
-let appDiv=document.getElementById('app');
+let appDiv = document.getElementById('app');
 
 //draw text onto canvas 
 
@@ -44,6 +44,34 @@ let appDiv=document.getElementById('app');
 
 let roseURL = "https://images.pexels.com/photos/736230/pexels-photo-736230.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
 
+// let picture = document.getElementById("picture");
+
+//return could not GET error 
+// function getPic(e) {
+//     var fileInput = e.target.files;
+//     if (fileInput.length > 0) {
+//         var windowURL = window.URL || window.webkitURL;
+//         var picURL = windowURL.createObjectURL(fileInput[0]);
+// console.log(picURL)
+//         var newPic = new Image();
+//         newPic.onload = function () {
+//             ctx.drawImage(newPic, 20, 20, 500, 400);
+//             newPic.src = picURL;
+//             windowURL.revokeObjectURL(picURL);
+//         }
+//     }
+
+
+// }
+
+
+//draw to canvas 
+
+
+
+picture.addEventListener("change", function (e) {
+    getPic(e);
+});
 
 bg.addEventListener("click", function () {
     appDiv.innerHTML += `
@@ -53,9 +81,9 @@ bg.addEventListener("click", function () {
      style="left:${window.innerWidth / 2 + Math.random() * 50}px;
             top:${window.innerHeight / 2 + Math.random() * 50}px;" />
     `;
-  });
+});
 
-  bg.addEventListener("touchstart", function () {
+bg.addEventListener("touchstart", function () {
     appDiv.innerHTML += `
     <image crossorigin="anonymous"
      class="draggable"
@@ -63,7 +91,7 @@ bg.addEventListener("click", function () {
      style="left:${window.innerWidth / 2 + Math.random() * 50}px;
             top:${window.innerHeight / 2 + Math.random() * 50}px;" />
     `;
-  });
+});
 
 
 text.addEventListener("click", function () {
@@ -77,9 +105,9 @@ text.addEventListener("click", function () {
     :)
     </h1>
     `;
-  });
+});
 
-  text.addEventListener("touchstart", function () {
+text.addEventListener("touchstart", function () {
 
     appDiv.innerHTML += `
     <h1 class="draggable"
@@ -91,8 +119,8 @@ text.addEventListener("click", function () {
     :)
     </h1>
     `;
-  });
-  
+});
+
 
 //touch location determins the placement of the text
 
@@ -109,70 +137,6 @@ text.addEventListener("click", function () {
 
 
 
-
-
-
-//drag and drop 
-let activeElement = null;
-let offset_x;
-let offset_y;
-let last_z = 1;
-
-
-document.body.addEventListener("mousedown", function (ev) {
-    ev.preventDefault();
-    activeElement = ev.target;
-    console.log("activeElements", activeElement)
-
-    let bounds = ev.target.getBoundingClientRect();
-    offset_x = ev.clientX - bounds.left;
-    offset_y = ev.clientY - bounds.top;
-    if(activeElement!=canvas){
-        activeElement.style.zIndex = last_z;
-        last_z++;
-    }
-});
-document.body.addEventListener("mouseup", function (ev) {
-    activeElement = null;
-});
-
-document.body.addEventListener("mousemove", function (ev) {
-    let x = ev.clientX - offset_x;
-    let y = ev.clientY - offset_y;
-    if (activeElement) {
-        activeElement.style.left = x + "px";
-        activeElement.style.top = y + "px";
-    }
-});
-
-
-
-document.body.addEventListener("touchend", function (ev) {
-    ev.preventDefault();
-    activeElement = ev.target;
-    console.log("activeElements", activeElement)
-
-    let bounds = ev.target.getBoundingClientRect();
-    offset_x = ev.clientX - bounds.left;
-    offset_y = ev.clientY - bounds.top;
-    if(activeElement!=canvas){
-        activeElement.style.zIndex = last_z;
-        last_z++;
-    }
-});
-document.body.addEventListener("touchstart", function (ev) {
-    activeElement = null;
-});
-
-document.body.addEventListener("touch", function (ev) {
-    let x = ev.clientX - offset_x;
-    let y = ev.clientY - offset_y;
-    if (activeElement) {
-        activeElement.style.left = x + "px";
-        activeElement.style.top = y + "px";
-    }
-    console.log("touched")
-});
 
 
 //basic touch events 

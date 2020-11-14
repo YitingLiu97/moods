@@ -21,6 +21,8 @@
     <!-- have to make the object aboslute to be moved -->
     <div id="canvasWrapper">
         <canvas id="canvas"></canvas>
+        <canvas id='takePhotoCanvas'></canvas>
+
     </div>
 
 
@@ -29,7 +31,11 @@
         <button id="text">text</button>
         <button id="draw">draw</button>
         <button id="save">save</button>
+        <!-- <input id="picture"  type="file" accept="image/*" capture="camera"> -->
+        <input id="picture"  type="file">
 
+            <!-- <button id='takePhotoButton' disabled>Take Photo</button> -->
+    
     </div>
     <!--  
     
@@ -40,12 +46,18 @@
         <button id="trash">trash</button>
     </div>
     -->
+
+
     <footer>
         <p>proudly created by Yiting Liu.</p>
     </footer>
     <script type="module" src="src/js/main.js"></script>
+    <script src="src/js/imageCapture.js"></script>
     <!-- <script type="module"src="src/js/main.js"></script> -->
+<script>
+      document.querySelector('#takePhotoButton').addEventListener('click', onTakePhotoButtonClick);
 
+</script>
 </body>
 
 <!-- 
