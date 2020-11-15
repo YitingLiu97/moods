@@ -27,8 +27,7 @@ This will be the study for materials and textures as a collection for my researc
 [Card Diary - iOS App](https://www.behance.net/gallery/59120015/Card-Diary-iOS-App?isa0=1)
 
 [https://www.pinterest.com/yliu557/thesis/material/](https://www.pinterest.com/yliu557/thesis/material/)
-
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8eaa6cb9-d21d-42a1-b2be-3919580f9166/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8eaa6cb9-d21d-42a1-b2be-3919580f9166/Untitled.png)
+![assets/pinterestInspo.png](assets/pinterestInspo.png)
 
 # Steps of creation recommended by Max
 
