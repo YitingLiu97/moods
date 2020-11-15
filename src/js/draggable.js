@@ -16,7 +16,7 @@ function startAction(ev) {
   let firstTouch = touches[0];
   if (firstTouch.target.classList.contains("draggable")) {
     if (firstTouch.target.tagName === "IMG") {
-      ev.preventDefault();
+      // ev.preventDefault();
     }
     let selectedElement = checkImageCoord(firstTouch.target, ev);
     if (!selectedElement || !selectedElement.classList.contains("draggable")) {

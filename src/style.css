@@ -1,19 +1,37 @@
 * {
-    font-family: sans-serif;
+    /* font-family: sans-serif; */
     margin: 0;
     padding: 0;
     overflow: hidden;
+    /* font-family: 'Bungee Inline', cursive;
+    font-family: 'Caveat Brush', cursive;
+    font-family: 'Finger Paint', cursive;
+    font-family: 'Nanum Brush Script', cursive;
+    font-family: 'Raleway Dots', cursive;
+    font-family: 'Reenie Beanie', cursive;
+    font-family: 'Rye', cursive;
+    font-family: 'Vast Shadow', cursive; */
 
 
 }
+
+h1{
+    font-family: 'Finger Paint', cursive;
+}
+
+h2,p,a,button{
+    font-family: 'Reenie Beanie', cursive;
+    font-size: xx-large;
+    word-wrap: break-word;
+
+}
+
 
 html,
 body {
     height: 100vh;
     height: -webkit-fill-available;
-    /* touch-action: none; */
 
-    /* overflow-y: hidden; */
 }
 
 #title {
@@ -21,9 +39,11 @@ body {
     height: 10vh;
     text-align: center;
     display: flex;
+    flex-flow: column;
     justify-content: center;
     align-items: center;
     position: absolute;
+    margin: 10px;
 }
 
 #canvasWrapper {
@@ -63,31 +83,31 @@ img.draggable {
 
 }
 
+
 #selections {
     width: 100%;
-    /* padding: 0 2.5vw; */
     height: 5vh;
-    position: relative;
-    position: fixed;
-    bottom: 2vh;
-    bottom: 20;
+    position: absolute;
+    bottom: 0;
     display: flex;
     justify-content: space-around;
     align-items: center;
     align-self: center;
+
 }
 
-#selections>button {
+#selections>button,
+#bgSelections>button {
     height: 5vh;
     width: 100%;
-    /* bottom: 0; */
+    border: 5px solid #88c;
+
 }
 
 #choices {
     width: 95vw;
     padding: 0 2.5vw;
     height: 5vh;
-
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -99,14 +119,28 @@ img.draggable {
     width: 100%;
 }
 
-footer {
-    position: fixed;
-    bottom: 0;
-    text-align: center;
-    width: 100vw;
-    height:2vh;
-    background-color: green;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+#bgSelections {
+    height: 5vh;
+    width: 100%;
+    position: relative;
+
+
+}
+
+#bg {
+    width: 100%;
+    cursor: pointer;
+}
+
+
+@media only screen and (max-width: 600px) {
+
+    h1{
+        font-size: x-large;
+    }
+    h2,p,a,button{
+        font-size: large;
+    }
+        
 }

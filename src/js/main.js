@@ -14,6 +14,7 @@ import {
 
 
 import {} from "./draggable.js";
+
 // position randomly
 let draggables = document.querySelectorAll(".draggable");
 draggables.forEach((element) => {
@@ -37,87 +38,103 @@ let save = document.getElementById("save");
 let trash = document.getElementById("trash");
 let appDiv = document.getElementById('app');
 
-//draw text onto canvas 
+//draw text onto canvas - change text fonts 
 
 //draw text input on canvas 
 //inspo: https://thefutureofmemory.online/hanzi-maker/
 
-let roseURL = "https://images.pexels.com/photos/736230/pexels-photo-736230.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+//get file input from phone and camera 
+const input = document.querySelector('input');
 
-// let picture = document.getElementById("picture");
+input.addEventListener("change",updateImageDisplay);
 
-//return could not GET error 
-// function getPic(e) {
-//     var fileInput = e.target.files;
-//     if (fileInput.length > 0) {
-//         var windowURL = window.URL || window.webkitURL;
-//         var picURL = windowURL.createObjectURL(fileInput[0]);
-// console.log(picURL)
-//         var newPic = new Image();
-//         newPic.onload = function () {
-//             ctx.drawImage(newPic, 20, 20, 500, 400);
-//             newPic.src = picURL;
-//             windowURL.revokeObjectURL(picURL);
-//         }
-//     }
+function updateImageDisplay() {
+    const curFiles = input.files;
+    if(curFiles.length === 0) {
+      console.log('No files currently selected for upload');
+    
+    } else {
 
+      for(const file of curFiles) {
+        if(validFileType(file)) {
+          let image = document.createElement('img');
+          image.src = URL.createObjectURL(file);
+          
+          appDiv.innerHTML += `
+          <image crossorigin="anonymous"
+           class="draggable"
+           src=${image.src}
+           style="left:${window.innerWidth / 2 + Math.random() * 50}px;
+                  top:${window.innerHeight / 2 + Math.random() * 50}px;" />
+          `;
+        } else {
+        console.log(`File name ${file.name}: Not a valid file type. Update your selection.`);
 
-// }
+        }
+          }
+    }
+  }
 
+  const fileTypes = [
+    'image/apng',
+    'image/bmp',
+    'image/gif',
+    'image/jpeg',
+    'image/pjpeg',
+    'image/png',
+    'image/svg+xml',
+    'image/tiff',
+    'image/webp',
+    `image/x-icon`
+];
+
+function validFileType(file) {
+  return fileTypes.includes(file.type);
+}
+document.getElementById('bg').onclick = function() {
+    document.getElementById('picture').click();
+};
+/* make the picture less res? 
+function returnFileSize(number) {
+    if(number < 1024) {
+      return number + 'bytes';
+    } else if(number > 1024 && number < 1048576) {
+      return (number/1024).toFixed(1) + 'KB';
+    } else if(number > 1048576) {
+      return (number/1048576).toFixed(1) + 'MB';
+    }
+  }
+  */
 
 //draw to canvas 
-
-
-
-picture.addEventListener("change", function (e) {
-    getPic(e);
-});
-
-bg.addEventListener("click", function () {
-    appDiv.innerHTML += `
-    <image crossorigin="anonymous"
-     class="draggable"
-     src=${roseURL}
-     style="left:${window.innerWidth / 2 + Math.random() * 50}px;
-            top:${window.innerHeight / 2 + Math.random() * 50}px;" />
-    `;
-});
-
-bg.addEventListener("touchstart", function () {
-    appDiv.innerHTML += `
-    <image crossorigin="anonymous"
-     class="draggable"
-     src=${roseURL}
-     style="left:${window.innerWidth / 2 + Math.random() * 50}px;
-            top:${window.innerHeight / 2 + Math.random() * 50}px;" />
-    `;
-});
+let fonts=["'Finger Paint', cursive","'Caveat Brush', cursive","'Finger Paint', cursive","'Nanum Brush Script', cursive","'Raleway Dots', cursive","'Reenie Beanie', cursive","'Rye', cursive","'Vast Shadow', cursive"]
 
 
 text.addEventListener("click", function () {
     appDiv.innerHTML += `
-    <h1 class="draggable"
+    <h2 class="draggable"
     contenteditable
     style="left:${window.innerWidth / 2 + Math.random() * 50}px;
             top:${window.innerHeight / 2 + Math.random() * 50}px;
-            "          
+            font-family:${fonts[Math.abs(norm_random(fonts.length-1).toFixed(0))]};"          
             >
-    :)
-    </h1>
+    I feel ...
+    </h2>
     `;
+    // console.log(Math.abs(norm_random(fonts.length-1).toFixed(0)));
 });
 
-text.addEventListener("touchstart", function () {
+text.addEventListener("touch", function () {
 
     appDiv.innerHTML += `
-    <h1 class="draggable"
+    <h2 class="draggable"
     contenteditable
     style="left:${window.innerWidth / 2 + Math.random() * 50}px;
             top:${window.innerHeight / 2 + Math.random() * 50}px;
-        "          
+            font-family:${fonts[Math.abs(norm_random(fonts.length-1).toFixed(0))]};"               
             >
-    :)
-    </h1>
+    I feel ...
+    </h2>
     `;
 });
 
@@ -212,7 +229,7 @@ canvas.addEventListener("touchmove", function (e) {
 
     drawLine();
     paintMove(p1.x, p1.y, p2.x, p2.y)
-    // middleCircle();
+    middleCircle();
 
 
 });
@@ -261,11 +278,11 @@ let index = 0;
 let effectsBtn = document.getElementById("bg");
 ctx.globalCompositeOperation = effects[0];
 
-effectsBtn.addEventListener("click", function () {
-    ctx.globalCompositeOperation = effects[index % effects.length];
-    index++;
-    effectsBtn.innerHTML = effects[index % effects.length];
-})
+// effectsBtn.addEventListener("click", function () {
+//     ctx.globalCompositeOperation = effects[index % effects.length];
+//     index++;
+//     effectsBtn.innerHTML = effects[index % effects.length];
+// })
 
 function paintMove(x, y, x2, y2) {
 
@@ -365,10 +382,10 @@ canvas.addEventListener("mousedown", function (e) {
 });
 
 
-save.addEventListener("click", function () {
-    console.log("save!");
-    //draw everything onto the bg image and save it 
-    canvas.toBlob(function (blob) {
-        saveAs(blob, "drawing.png");
-    });
-})
+// save.addEventListener("click", function () {
+//     console.log("save!");
+//     //draw everything onto the bg image and save it 
+//     canvas.toBlob(function (blob) {
+//         saveAs(blob, "moods_jounral.png");
+//     });
+// })

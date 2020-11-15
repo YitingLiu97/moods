@@ -6,36 +6,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Moods-Diary</title>
     <link rel="stylesheet" href="src/style.css">
-
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Inline&family=Caveat+Brush&family=Finger+Paint&family=Nanum+Brush+Script&family=Raleway+Dots&family=Reenie+Beanie&family=Rye&family=Vast+Shadow&display=swap" rel="stylesheet">
     <!-- A mood diary that allows you to draw, take picture, and write. Then share to others or keep it a secret to yourself.  -->
 </head>
 
 <body>
 
+    <!-- more contenteditable trick: https://css-tricks.com/text-effects-css-little-contenteditable-trick/ -->
+    
+    
     <div id="app"></div>
-
     <div id="title">
-        <h1 contenteditable>Moods</h1>
+        <h1 contenteditable="">Moods</h1>
+        <p>A moods-material journal made by <a href="https://yitingliu.com/"> Yiting Liu</a></p>
     </div>
 
     <!-- have to make the object aboslute to be moved -->
     <div id="canvasWrapper">
         <canvas id="canvas"></canvas>
-        <canvas id='takePhotoCanvas'></canvas>
-
     </div>
 
+    <div crossorigin="anonymous" class="draggable">
+    </div>
 
     <div id="selections">
-        <button id="bg">bg</button>
-        <button id="text">text</button>
-        <button id="draw">draw</button>
-        <button id="save">save</button>
-        <!-- <input id="picture"  type="file" accept="image/*" capture="camera"> -->
-        <input id="picture"  type="file">
+        <div id="bgSelections">
+            <button id="bg">upload</button>
+            <input id="picture"  type="file" accept=".jpg, .jpeg, .png" multiple capture="camera">
 
-            <!-- <button id='takePhotoButton' disabled>Take Photo</button> -->
-    
+        </div>
+        <button id="text">text</button>
+        <!-- <button id="draw">draw</button> -->
+        <!-- <button id="clear">clear</button> -->
+
+        <!-- <button id="save">save</button> -->
+        <!-- <input id="picture"  type="file" accept="image/*" capture="camera"> -->
+
+        <!-- <button id='takePhotoButton' disabled>Take Photo</button> -->
+
     </div>
     <!--  
     
@@ -48,16 +57,13 @@
     -->
 
 
-    <footer>
+    <!-- <footer>
         <p>proudly created by Yiting Liu.</p>
-    </footer>
+    </footer> -->
     <script type="module" src="src/js/main.js"></script>
-    <script src="src/js/imageCapture.js"></script>
+    <!-- <script src="src/js/imageCapture.js"></script> -->
     <!-- <script type="module"src="src/js/main.js"></script> -->
-<script>
-      document.querySelector('#takePhotoButton').addEventListener('click', onTakePhotoButtonClick);
 
-</script>
 </body>
 
 <!-- 
