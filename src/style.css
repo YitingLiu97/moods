@@ -73,7 +73,7 @@ img.draggable {
     /* 
     width: 95vw;
     height: 70vh; */
-    border: 1pt red dotted;
+    /* border: 1pt red dotted; */
     left: 0;
     top: 0;
     bottom: 0;
@@ -100,6 +100,7 @@ img.draggable {
 #bgSelections>button {
     height: 5vh;
     width: 100%;
+    background-color: transparent;
     border: 5px solid #88c;
 
 }
