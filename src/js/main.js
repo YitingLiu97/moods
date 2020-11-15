@@ -43,7 +43,7 @@ let appDiv = document.getElementById('app');
 //draw text input on canvas 
 //inspo: https://thefutureofmemory.online/hanzi-maker/
 
-//get file input from phone and camera 
+//get file input from phone and camera: https://github.com/mdn/learning-area/blob/master/html/forms/file-examples/file-example.html
 const input = document.querySelector('input');
 
 input.addEventListener("change",updateImageDisplay);
