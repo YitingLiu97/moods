@@ -1,0 +1,32 @@
+{
+  "name": "moods-diary",
+  "version": "1.0.0",
+  "description": "A moods-material jounral made by Yiting Liu",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"No test specified\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YitingLiu97/moods.git"
+  },
+  "keywords": [
+    "moods",
+    "materials",
+    "journal",
+    "draw",
+    "mobile",
+    "app",
+    "playful"
+  ],
+  "author": "Yiting Liu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YitingLiu97/moods/issues"
+  },
+  "homepage": "https://github.com/YitingLiu97/moods#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "html2canvas": "^1.0.0-rc.7"
+  }
+}

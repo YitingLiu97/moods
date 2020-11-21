@@ -64,6 +64,19 @@ They are limited to the canvas of their phone since they can not scroll in the c
 3. Changing fonts for texts 
 ![assets/fonts.png](assets/fonts.png)
 
+
+**Process on 11/21/2020 + Problems 
+1. Finally acheive to fixed the server and client side through npm installing express and npm install the rest of the packages 
+2. Replaced the process.env.PORT with const port = process.env.PORT||3000; But still do not understand why that is undefined. 
+
+3. Added in server.js. Otherwise, it keeps showing cannot GET
+app.get('/', function(req, res){
+  res.sendFile(__dirname+'/'); // change the path 
+});
+
+//possible saving text to canvas: https://stackoverflow.com/questions/31570798/how-to-make-html-div-with-text-over-image-downloadable-savable-for-users
+
+// npm library to save html to canvas http://html2canvas.hertzen.com/
 **Next Steps** 
 
 1. Allow user to draw on top 
