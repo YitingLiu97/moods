@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
-
 <!-- goals:
 - save to server 
 - see collections 
@@ -37,8 +35,7 @@
     <meta property="article:author" content="Yiting Liu" />
 
 
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script> -->
-
+    <script src="src/js/html2canvas.js"></script>
     <!-- A mood diary that allows you to draw, take picture, and write. Then share to others or keep it a secret to yourself.  -->
 </head>
 
@@ -49,13 +46,13 @@
 
     <div id="app"></div>
     <div id="title">
-        <h1 >Moods</h1>
+        <h1>Moods</h1>
         <p>A moods-material journal made by <a href="https://yitingliu.com/"> Yiting Liu</a></p>
     </div>
 
     <!-- have to make the object aboslute to be moved -->
     <div id="canvasWrapper">
-        <canvas id="canvas"  ></canvas>
+        <canvas id="canvas"></canvas>
     </div>
 
     <div crossorigin="anonymous" class="draggable">
