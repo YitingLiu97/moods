@@ -26,6 +26,9 @@ h2,p,a,button{
 
 }
 
+/* #app{
+    wid
+} */
 
 html,
 body {
@@ -61,8 +64,18 @@ body {
     display: block;
     user-select: none;
     margin: 0;
+    overflow: show;
 }
 
+#test{
+
+        /* position: absolute;
+        filter: drop-shadow(1px 1px 3px white);
+        display: block;
+        user-select: none;
+        margin: 0; */
+    
+}
 img.draggable {
     width: 20%;
 }

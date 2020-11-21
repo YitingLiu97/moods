@@ -5,7 +5,7 @@ const port = process.env.PORT||5500;
 const app = express();
 
 const upload_folder = "tmp";
-// app.use(express.static("src"));
+app.use(express.static("src"));
 
 
 // app.use(bodyParser.json());

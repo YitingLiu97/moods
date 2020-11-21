@@ -19,7 +19,6 @@ import {} from "./draggable.js";
 let canvas = document.getElementById("canvas");
 let upload = document.getElementById("upload");
 let posts = document.getElementById("posts");
-getPosts();
 
 // fetch posts from server
 function getPosts() {
@@ -39,17 +38,20 @@ fetch("/posts", {
   });
 }
 
-html2canvas(document.querySelector("#app")).then(canvas => {
-    document.body.appendChild(canvas);
-});
+getPosts();
+
+
+
 //UPLOAD CANVAS TO SERVER
 upload.addEventListener("click", e => {
 
-  // html2canvas(document.body).then(canvas => {
-  //   document.body.appendChild(canvas);
+  html2canvas(document.body).then(canvas => {
+    document.body.appendChild(canvas);
+    document.body.appendChild(appDiv);
 
     let payload = {
       image: canvas.toDataURL("image/png"),
+      // crossorigin:"anonymous"
     };
 
 
@@ -58,13 +60,15 @@ upload.addEventListener("click", e => {
         body: JSON.stringify(payload), // data can be `string` or {object}!
         headers: {
           "Content-Type": "application/json"
-        }
+        },
+        // crossorigin:"anonymous"
+
       }) .then(res => res.json()).then(response => {
         console.log("Success:", JSON.stringify(response));
-        getPosts();
+        // getPosts();
       });
   });
-// });
+});
 
 
 // position randomly
@@ -89,6 +93,10 @@ let draw = document.getElementById("draw");
 let save = document.getElementById("save");
 let trash = document.getElementById("trash");
 let appDiv = document.getElementById('app');
+
+// dragg the element. if it on top of trash, delete the element 
+
+
 
 //draw text onto canvas - change text fonts 
 
@@ -166,13 +174,13 @@ text.addEventListener("click", function () {
   appDiv.innerHTML += `
   <h2 class="draggable"
   contenteditable
-  style="left:${window.innerWidth / 2 + Math.random() * 50}px;
-          top:${window.innerHeight / 2 + Math.random() * 50}px;
-          font-family:${fonts[Math.abs(norm_random(fonts.length-1).toFixed(0))]};"          
+     
           >
   I feel ...
   </h2>
   `;
+ 
+
 
   // console.log(Math.abs(norm_random(fonts.length-1).toFixed(0)));
 });
