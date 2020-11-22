@@ -22,20 +22,20 @@ let posts = document.getElementById("posts");
 
 // fetch posts from server
 function getPosts() {
-fetch("/posts", {
-  method: "GET"
-})
-  .then(res => res.json())
-  .then(response => {
+  fetch("/posts", {
+      method: "GET"
+    })
+    .then(res => res.json())
+    .then(response => {
 
-    console.log("RESPONSE", response)
-    let images_html = response
-      .map(file_url => {
-        return `<img src="uploaded/${file_url}">`;
-      })
-      .join("\n");
-    posts.innerHTML = images_html;
-  });
+      console.log("RESPONSE", response)
+      let images_html = response
+        .map(file_url => {
+          return `<img src="uploaded/${file_url}">`;
+        })
+        .join("\n");
+      posts.innerHTML = images_html;
+    });
 }
 
 getPosts();
@@ -56,17 +56,17 @@ upload.addEventListener("click", e => {
 
 
     fetch("/upload", {
-        method: "POST",
-        body: JSON.stringify(payload), // data can be `string` or {object}!
-        headers: {
-          "Content-Type": "application/json"
-        },
-        // crossorigin:"anonymous"
+      method: "POST",
+      body: JSON.stringify(payload), // data can be `string` or {object}!
+      headers: {
+        "Content-Type": "application/json"
+      },
+      // crossorigin:"anonymous"
 
-      }) .then(res => res.json()).then(response => {
-        console.log("Success:", JSON.stringify(response));
-        // getPosts();
-      });
+    }).then(res => res.json()).then(response => {
+      console.log("Success:", JSON.stringify(response));
+      // getPosts();
+    });
   });
 });
 
@@ -76,13 +76,13 @@ let draggables = document.querySelectorAll(".draggable");
 draggables.forEach((element) => {
   let bounds = element.getBoundingClientRect();
   element.style.left =
-      bounds.width / 2 +
-      Math.random() * (window.innerWidth - bounds.width) +
-      "px";
+    bounds.width / 2 +
+    Math.random() * (window.innerWidth - bounds.width) +
+    "px";
   element.style.top =
-      bounds.height / 2 +
-      Math.random() * (window.innerHeight - bounds.height) +
-      "px";
+    bounds.height / 2 +
+    Math.random() * (window.innerHeight - bounds.height) +
+    "px";
 });
 
 
@@ -106,32 +106,33 @@ let appDiv = document.getElementById('app');
 //get file input from phone and camera: https://github.com/mdn/learning-area/blob/master/html/forms/file-examples/file-example.html
 const input = document.querySelector('input');
 
-input.addEventListener("change",updateImageDisplay);
+input.addEventListener("change", updateImageDisplay);
 
 function updateImageDisplay() {
   const curFiles = input.files;
-  if(curFiles.length === 0) {
+  if (curFiles.length === 0) {
     console.log('No files currently selected for upload');
-  
+
   } else {
 
-    for(const file of curFiles) {
-      if(validFileType(file)) {
+    for (const file of curFiles) {
+      if (validFileType(file)) {
         let image = document.createElement('img');
         image.src = URL.createObjectURL(file);
-        
+        console.log(image.src)
+
         appDiv.innerHTML += `
-        <image crossorigin="anonymous"
-         class="draggable"
-         src=${image.src}
-         style="left:${window.innerWidth / 2 + Math.random() * 50}px;
-                top:${window.innerHeight / 2 + Math.random() * 50}px;" />
+        <img  crossorigin="anonymous"
+        class="draggable" style="overflow:visible;left:${window.innerWidth / 2 + Math.random() * 50}px;
+        top:${window.innerHeight / 2 + Math.random() * 50}px;"
+        src=${image.src} alt="">
+    
         `;
       } else {
-      console.log(`File name ${file.name}: Not a valid file type. Update your selection.`);
+        console.log(`File name ${file.name}: Not a valid file type. Update your selection.`);
 
       }
-        }
+    }
   }
 }
 
@@ -149,9 +150,9 @@ const fileTypes = [
 ];
 
 function validFileType(file) {
-return fileTypes.includes(file.type);
+  return fileTypes.includes(file.type);
 }
-document.getElementById('bg').onclick = function() {
+document.getElementById('bg').onclick = function () {
   document.getElementById('picture').click();
 };
 /* make the picture less res? 
@@ -167,19 +168,21 @@ function returnFileSize(number) {
 */
 
 //draw to canvas 
-let fonts=["'Finger Paint', cursive","'Caveat Brush', cursive","'Finger Paint', cursive","'Nanum Brush Script', cursive","'Raleway Dots', cursive","'Reenie Beanie', cursive","'Rye', cursive","'Vast Shadow', cursive"]
+let fonts = ["'Finger Paint', cursive", "'Caveat Brush', cursive", "'Finger Paint', cursive", "'Nanum Brush Script', cursive", "'Raleway Dots', cursive", "'Reenie Beanie', cursive", "'Rye', cursive", "'Vast Shadow', cursive"]
 
 
 text.addEventListener("click", function () {
-  appDiv.innerHTML += `
-  <h2 class="draggable"
+  appDiv.innerHTML += `<h2 class="draggable"
   contenteditable
-     
+  style="left:${window.innerWidth / 2 + Math.random() * 50}px;
+          top:${window.innerHeight / 2 + Math.random() * 50}px;
+          
+          font-family:${fonts[Math.abs(norm_random(fonts.length-1).toFixed(0))]};"               
           >
   I feel ...
   </h2>
   `;
- 
+
 
 
   // console.log(Math.abs(norm_random(fonts.length-1).toFixed(0)));
@@ -192,13 +195,14 @@ text.addEventListener("touch", function () {
   contenteditable
   style="left:${window.innerWidth / 2 + Math.random() * 50}px;
           top:${window.innerHeight / 2 + Math.random() * 50}px;
+          
           font-family:${fonts[Math.abs(norm_random(fonts.length-1).toFixed(0))]};"               
           >
   I feel ...
   </h2>
   `;
 
-  
+
 });
 
 
@@ -245,10 +249,10 @@ let click = "left";
 canvas.addEventListener("mousemove", function (e) {
 
   if (click == "left") {
-      p1 = {
-          x: e.clientX * pixelRatio,
-          y: e.clientY * pixelRatio
-      };
+    p1 = {
+      x: e.clientX * pixelRatio,
+      y: e.clientY * pixelRatio
+    };
   }
 
 
@@ -257,10 +261,10 @@ canvas.addEventListener("mousemove", function (e) {
   middleCircle();
 
   if (click == "right") {
-      p2 = {
-          x: e.clientX * pixelRatio,
-          y: e.clientY * pixelRatio
-      };
+    p2 = {
+      x: e.clientX * pixelRatio,
+      y: e.clientY * pixelRatio
+    };
   }
 
   paintMove(p1.x, p1.y, p2.x, p2.y)
@@ -274,17 +278,17 @@ canvas.addEventListener("touchmove", function (e) {
 
   let touch = touches[0];
   p1 = {
-      x: touch.clientX * pixelRatio,
-      y: touch.clientY * pixelRatio
+    x: touch.clientX * pixelRatio,
+    y: touch.clientY * pixelRatio
   };
 
   touch = touches[1];
 
   if (touch) {
-      p2 = {
-          x: touch.clientX * pixelRatio,
-          y: touch.clientY * pixelRatio
-      };
+    p2 = {
+      x: touch.clientX * pixelRatio,
+      y: touch.clientY * pixelRatio
+    };
 
 
   }
@@ -392,7 +396,7 @@ pushState();
 function undo() {
   console.log("undo clicked")
   if (undoStack.length > 1) {
-      undoStack.pop();
+    undoStack.pop();
   }
   let lastElemeent = undoStack[undoStack.length - 1];
   ctx.putImageData(lastElemeent, 0, 0);
@@ -402,7 +406,7 @@ function pushState() {
   undoStack.push(ctx.getImageData(0, 0, canvas.width, canvas.height));
 
   if (undoStack.length > 50) {
-      undoStack.shift();
+    undoStack.shift();
   }
 }
 
@@ -435,11 +439,11 @@ canvas.addEventListener("mousedown", function (e) {
   paintStart(e.clientX, e.clientY);
 
   if (e.button == 2) {
-      click = "right";
-      console.log("right click")
+    click = "right";
+    console.log("right click")
   } else {
-      click = "left";
-      console.log("left click")
+    click = "left";
+    console.log("left click")
 
   }
 
@@ -453,4 +457,3 @@ canvas.addEventListener("mousedown", function (e) {
 //         saveAs(blob, "moods_jounral.png");
 //     });
 // })
-

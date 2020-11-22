@@ -2,12 +2,13 @@
 <html lang="en">
 
 <!-- goals:
-- save to server 
+- save to server - on going - fixed the text but not uploading files - 11/21/2020
 - see collections 
 - user login?
 - select fonts 
 - draw and highlight 
 - erase the part 
+- trash the part when it is closer 
 - save the page?
 - share with friends  -->
 
@@ -43,22 +44,24 @@
 
     <!-- more contenteditable trick: https://css-tricks.com/text-effects-css-little-contenteditable-trick/ -->
 
+    <div id="app">
 
-   
-    <h2 contenteditable crossorigin="anonymous" class="draggable"  id="test">HELLO from index</h2>
+        <img  crossorigin="anonymous"
+        class="draggable"src="assets/picCollageUI.png"  alt="">
+    
+
+    </div>
 
     <div id="title">
         <h1>Moods</h1>
         <p>A moods-material journal made by <a href="https://yitingliu.com/"> Yiting Liu</a></p>
-</div>
+    </div>
 
     <!-- have to make the object aboslute to be moved -->
     <div id="canvasWrapper">
         <canvas id="canvas"></canvas>
     </div>
 
-    <div crossorigin="anonymous" class="draggable">
-    </div>
 
     <div id="selections">
         <div id="bgSelections">

@@ -11,10 +11,13 @@ app.use(express.static("src"));
 // app.use(bodyParser.json());
 app.use(bodyParser.json({limit: '10mb', extended: true}));//avoid payload too large issue 
 app.use("/uploaded", express.static(upload_folder));
-app.use('/src', express.static('src'))
+app.use('/src', express.static('src'));
+app.use('/tmp', express.static('tmp'));
 
-app.get('/', function(req, res){
-  res.sendFile(__dirname+'/'); // change the path to your index.html
+ 
+app.use('/assets', express.static('assets'));
+app.get('/index.html', function(req, res){
+  res.sendFile(__dirname+'/index.html'); // change the path to your index.html
 });
 
 // // get list of posts
@@ -23,8 +26,9 @@ app.get("/posts", (req, res) => {
     res.send(
       
       JSON.stringify(files));
-      console.log("files")
   });
+        console.log("files, "+files);
+
 });
 
 // Upload post route
