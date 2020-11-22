@@ -68,15 +68,6 @@ body {
     overflow: show;
 }
 
-#test{
-
-        /* position: absolute;
-        filter: drop-shadow(1px 1px 3px white);
-        display: block;
-        user-select: none;
-        margin: 0; */
-    
-}
 img.draggable {
     width: 20%;
 }

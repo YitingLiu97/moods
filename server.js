@@ -16,18 +16,15 @@ app.use('/tmp', express.static('tmp'));
 
  
 app.use('/assets', express.static('assets'));
-app.get('/index.html', function(req, res){
+app.get('/', function(req, res){
   res.sendFile(__dirname+'/index.html'); // change the path to your index.html
 });
 
 // // get list of posts
 app.get("/posts", (req, res) => {
   fs.promises.readdir(upload_folder).then(files => {
-    res.send(
-      
-      JSON.stringify(files));
+    res.send(JSON.stringify(files));
   });
-        console.log("files, "+files);
 
 });
 

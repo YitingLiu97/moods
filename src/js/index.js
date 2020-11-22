@@ -20,12 +20,19 @@ let canvas = document.getElementById("canvas");
 let upload = document.getElementById("upload");
 let posts = document.getElementById("posts");
 
+let bg = document.getElementById("bg");
+let text = document.getElementById("text");
+let draw = document.getElementById("draw");
+let save = document.getElementById("save");
+let trash = document.getElementById("trash");
+let appDiv = document.getElementById('app');
+
+
 // fetch posts from server
 function getPosts() {
   fetch("/posts", {
       method: "GET"
-    })
-    .then(res => res.json())
+    }).then(res => res.json())
     .then(response => {
 
       console.log("RESPONSE", response)
@@ -39,7 +46,6 @@ function getPosts() {
 }
 
 getPosts();
-
 
 
 //UPLOAD CANVAS TO SERVER
@@ -60,17 +66,17 @@ upload.addEventListener("click", e => {
       body: JSON.stringify(payload), // data can be `string` or {object}!
       headers: {
         "Content-Type": "application/json"
-      },
-      // crossorigin:"anonymous"
-
+      }
     }).then(res => res.json()).then(response => {
       console.log("Success:", JSON.stringify(response));
-      // getPosts();
+      getPosts();
     });
   });
 });
 
+console.log(trash.style.width,"trash style")
 
+let draggable =false;
 // position randomly
 let draggables = document.querySelectorAll(".draggable");
 draggables.forEach((element) => {
@@ -83,17 +89,72 @@ draggables.forEach((element) => {
     bounds.height / 2 +
     Math.random() * (window.innerHeight - bounds.height) +
     "px";
+    draggable=true;
+
 });
 
 
 
-let bg = document.getElementById("bg");
-let text = document.getElementById("text");
-let draw = document.getElementById("draw");
-let save = document.getElementById("save");
-let trash = document.getElementById("trash");
-let appDiv = document.getElementById('app');
+// function dragStart(event) {
+//   event.dataTransfer.setData("Text", event.target.id);
+//   document.getElementById("demo").innerHTML = "Started to drag the p element";
+// }
 
+// function allowDrop(event) {
+//   event.preventDefault();
+// }
+
+// function drop(event) {
+//   event.preventDefault();
+//   var data = event.dataTransfer.items;
+//   data.forEach(e=>{
+//     e.parentNode.removeChild(e);
+//     console.log(e,'e');
+//   })
+// }
+// function dragend_handler(ev) {
+//   console.log("dragEnd");
+//   var dataList = ev.dataTransfer.items;
+//   for (var i = 0; i < dataList.length; i++) {
+//     dataList.remove(i);
+//   }
+//   // Clear any remaining drag data
+//   dataList.clear();
+// }
+  
+// text.addEventListener("dragend",function(){
+//   dragend_handler(trash);
+
+// })
+
+//click trash and delete one from appdiv
+// more like a redo 
+trash.addEventListener("click",function(){
+let counter=0;
+
+  if(counter<appDiv.childElementCount){
+
+    appDiv.children[appDiv.childElementCount-1-counter].remove();
+
+  }else{
+    counter=0;
+  }
+  counter++;
+
+})
+
+//drop and clear - inspo https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/ondrop
+
+// appDiv.addEventListener("drag",function(){
+//   console.log(   appDiv.children[0].draggable);
+
+// })
+
+//drag to trash and delete the specific event 
+// function dropToTrash(element,trash){
+//   if(element.draggble)
+
+// }
 // dragg the element. if it on top of trash, delete the element 
 
 
@@ -206,10 +267,15 @@ text.addEventListener("touch", function () {
 });
 
 
+function deleteItem(){
+  draggables.forEach((element) => {
+    element.parentNode.removeChild(element);
+  });
+}
 
-//touch location determins the placement of the text
-
-
+// trash.addEventListener("click",function(){
+//   deleteItem();
+// })
 // draw on canvas 
 
 
@@ -353,8 +419,6 @@ ctx.globalCompositeOperation = effects[0];
 // })
 
 function paintMove(x, y, x2, y2) {
-
-
   penDown = true;
   let rate = 20;
   // let changingCol = `rgba(${x%255},${y%255},${(x2+y2)%255},0.2)`;
