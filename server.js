@@ -22,7 +22,7 @@ app.get('/', function(req, res){
 
 // // get list of posts
 app.get("/posts", (req, res) => {
-  fs.promises.readdir(upload_folder).then(files => {
+  fs.promises.readdir(upload_folder).then(files => {  
     res.send(JSON.stringify(files));
   });
 

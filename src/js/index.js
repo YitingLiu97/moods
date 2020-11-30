@@ -26,6 +26,7 @@ let draw = document.getElementById("draw");
 let save = document.getElementById("save");
 let trash = document.getElementById("trash");
 let appDiv = document.getElementById('app');
+getPosts();
 
 
 // fetch posts from server
@@ -45,7 +46,6 @@ function getPosts() {
     });
 }
 
-getPosts();
 
 
 //UPLOAD CANVAS TO SERVER
@@ -59,7 +59,7 @@ upload.addEventListener("click", e => {
       image: canvas.toDataURL("image/png"),
       // crossorigin:"anonymous"
     };
-
+  
 
     fetch("/upload", {
       method: "POST",
@@ -69,12 +69,12 @@ upload.addEventListener("click", e => {
       }
     }).then(res => res.json()).then(response => {
       console.log("Success:", JSON.stringify(response));
-      getPosts();
+       // getPosts();
     });
   });
 });
 
-console.log(trash.style.width,"trash style")
+// console.log(trash.style.width,"trash style")
 
 let draggable =false;
 // position randomly
