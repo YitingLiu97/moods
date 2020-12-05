@@ -7,6 +7,10 @@ A journal of my **material and color journey on emotions.**
 ![assets/demo.png](assets/demo.png)
 # [Play](https://moods101.netlify.app/)
 
+# UI 
+I created the [UI interaction](https://www.figma.com/proto/ak6rx7JdfrHBLeLCZsGZS6/Moods-Diary-App_Final?node-id=102%3A2523&scaling=min-zoom) on Figma. 
+![assets/MoodsDiaryUI.png](assets/MoodsDiaryUI.png)
+
 # Elements
 
 This will be the study for materials and textures as a collection for my research on my phone. 
@@ -57,6 +61,7 @@ They are limited to the canvas of their phone since they can not scroll in the c
 
 # Progress
 
+
 **Accomplishments by 11/15** 
 
 1. Manipulating of size, scale, rotation
@@ -64,8 +69,7 @@ They are limited to the canvas of their phone since they can not scroll in the c
 3. Changing fonts for texts 
 ![assets/fonts.png](assets/fonts.png)
 
-
-**Process on 11/21/2020 + Problems 
+**Process on 11/21/2020 + Problems**
 1. Finally acheive to fixed the server and client side through npm installing express and npm install the rest of the packages 
 2. Replaced the process.env.PORT with const port = process.env.PORT||3000; But still do not understand why that is undefined. 
 
@@ -74,17 +78,26 @@ app.get('/', function(req, res){
   res.sendFile(__dirname+'/'); // change the path 
 });
 
-//possible saving text to canvas: https://stackoverflow.com/questions/31570798/how-to-make-html-div-with-text-over-image-downloadable-savable-for-users
+***Tutorials***
+1. [Possible saving text to canvas](https://stackoverflow.com/questions/31570798/how-to-make-html-div-with-text-over-image-downloadable-savable-for-users)
 
-// npm library to save html to canvas http://html2canvas.hertzen.com/
-**Next Steps** 
+2. [npm library to save html to canvas](http://html2canvas.hertzen.com/)
+
+**Next Steps From 11/21, Done by 12/5** 
 
 1. Allow user to draw on top 
-2. Save to the canvas 
+2. Save to the canvas (done)
 3. localStorage solution to check other saved creations in collections 
 4. sharable with friends 
-5. better UI 
+5. better UI (done)
 6. potential for music in the bg 
+
+**Accomplishments by 12/5** 
+
+1. Able to trash indivial element upon click 
+2. Save the uploaded image to canvas through [html2canvas](http://html2canvas.hertzen.com/). It has to do with AllowTaint and useCORS. For more details, see [here](https://github.com/niklasvh/html2canvas/issues/722). 
+3. Change the UI completely to make it minimalistic. Inspiration is originally from the template of [Sanity Sketching kit](https://www.figma.com/community/file/898186441853776318)
+
 
 # Research
 

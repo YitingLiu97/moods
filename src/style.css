@@ -2,7 +2,7 @@
     /* font-family: sans-serif; */
     margin: 0;
     padding: 0;
-    overflow: hidden;
+
     /* font-family: 'Bungee Inline', cursive;
     font-family: 'Caveat Brush', cursive;
     font-family: 'Finger Paint', cursive;
@@ -15,39 +15,55 @@
 
 }
 
-h1{
+h1 {
     font-family: 'Finger Paint', cursive;
 }
 
-h2,p,a,button{
+h2,
+p,
+a,
+button {
     font-family: 'Reenie Beanie', cursive;
     font-size: xx-large;
     word-wrap: break-word;
 
 }
 
-#app, #app img{
-   overflow: visible;
+#app,
+#app img,
+input {
+    overflow: visible;
 
 }
 
 html,
 body {
-    height: 100vh;
+    min-height: 100vh;
     height: -webkit-fill-available;
+}
+
+body {
+    overflow: hidden;
 
 }
 
 #title {
-    width: 100vw;
-    height: 10vh;
-    text-align: center;
+    padding: 0 2.5vw;
+    width: 95vw;
+    height: 50px;
+    top: 0;
     display: flex;
-    flex-flow: column;
+    flex-flow: row nowrap;
     justify-content: center;
     align-items: center;
     position: absolute;
-    margin: 10px;
+    margin: 5px 0;
+
+}
+
+h1,
+a {
+    font-size: large;
 }
 
 #canvasWrapper {
@@ -55,6 +71,8 @@ body {
     height: 100vh;
     position: absolute;
     z-index: -100;
+    overflow: visible;
+
 
 }
 
@@ -70,11 +88,12 @@ body {
 
 img.draggable {
     width: 20%;
+    overflow: visible;
 }
 
 #canvas {
     position: absolute;
-
+    width: 100%;
     /* 
     width: 95vw;
     height: 70vh; */
@@ -84,30 +103,110 @@ img.draggable {
     bottom: 0;
     right: 0;
     border-radius: 5px;
+    overflow: visible;
 
 
 }
 
-
-#selections {
+#postCol {
+    top: 120px;
+    left: 0;
+    right: 0;
+    display: none;
+    bottom: 120px;
+    /* bottom: 7vh; */
+    /* display: grid; */
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    grid-area: center;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    position: relative;
     width: 100%;
-    height: 5vh;
-    position: absolute;
-    bottom: 0;
+    height: 95vh;
+    overflow: visible;
+    /* z-index: 20; */
+    grid-area: auto;
+    height: -webkit-fill-available;
+
+}
+
+#postCol>div {
     display: flex;
-    justify-content: space-around;
+    align-items: center;
+    /* Vertical center of image & text */
+    background-color: orange;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    /* width: 100px;
+    height: 100px; */
+
+}
+
+#postCol>div img {
+    grid-area: 1 / 1 / 4 / 4;
+    max-width: 100%;
+    display: block;
+    margin: auto 0;
+    align-self: center; /* vertical centering */
+    align-items: center; /* vertical centering */
+
+}
+
+#topSel {
+    padding: 0 2.5vw;
+    width: 95vw;
+    height: 5vh;
+    top: 50px;
+    position: fixed;
+    background-color: transparent;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
     align-self: center;
+    z-index: 10;
+}
 
+button>img {
+    width: 40px;
+    height: 40px;
+}
+
+#selections {
+    padding: 0 2.5vw;
+    width: 95vw;
+    height: 5vh;
+    position: fixed;
+    background-color: transparent;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: center;
+    z-index: 10;
+
+}
+
+#selections>button {
+    width: 100%;
 }
 
 #selections>button,
+#topSel>button,
 #bgSelections>button {
+    border-style: none;
     height: 5vh;
-    width: 100%;
     background-color: transparent;
-    border: 5px solid #88c;
+    /* border: 5px solid #88c; */
 
+}
+
+#bgSelections>input {
+    display: none;
 }
 
 #choices {
@@ -142,11 +241,23 @@ img.draggable {
 
 @media only screen and (max-width: 600px) {
 
-    h1{
-        font-size: x-large;
+    h1 {
+        font-size: medium;
     }
-    h2,p,a,button{
+
+    h2,
+    p,
+    a,
+    button {
         font-size: large;
     }
-        
+
+    button>img {
+        width: 25px;
+        height: 25px;
+    }
+
+    #postCol {
+        top: 100px;
+    }
 }

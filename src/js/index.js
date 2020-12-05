@@ -19,48 +19,97 @@ import {} from "./draggable.js";
 let canvas = document.getElementById("canvas");
 let upload = document.getElementById("upload");
 let posts = document.getElementById("posts");
+let title = document.getElementById("title");
 
-let bg = document.getElementById("bg");
+posts.addEventListener("click", function () {
+  console.log(title.children[0].innerHTML)
+
+  if (title.children[0].innerHTML == `Moods Journal by <a href="https://yitingliu.com/"> Yiting Liu</a>`) {
+    title.children[0].innerHTML = "Sacred Collections"; //change Moods to Collections
+    postCol.style.display = "grid";
+    document.body.style.overflowY = "visible";
+
+  } else {
+    title.children[0].innerHTML = `Moods Journal by <a href="https://yitingliu.com/"> Yiting Liu</a>`; //change to Moods
+    postCol.style.display = "none";
+    document.body.style.overflowY = "hidden";
+  }
+
+  getPosts();
+  removeAllAppDiv();
+  render();
+
+  //hover on to each div will show your the full picture 
+  //can return to the collections page or add a new one? 
+});
+
+
+
+//click on post to see the full image 
+// can delete it as well 
+// let bg = document.getElementById("bg");
 let text = document.getElementById("text");
-let draw = document.getElementById("draw");
-let save = document.getElementById("save");
+// let draw = document.getElementById("draw");
+// let save = document.getElementById("save");
 let trash = document.getElementById("trash");
 let appDiv = document.getElementById('app');
-getPosts();
+// getPosts();
+let image;
+let postCol = document.getElementById("postCol");
 
 
 // fetch posts from server
 function getPosts() {
+
+  //show collections of the saved images 
   fetch("/posts", {
       method: "GET"
     }).then(res => res.json())
     .then(response => {
-
-      console.log("RESPONSE", response)
       let images_html = response
         .map(file_url => {
-          return `<img src="uploaded/${file_url}">`;
+          return `<div><img  src="uploaded/${file_url}"></div>`;
         })
         .join("\n");
-      posts.innerHTML = images_html;
+      //create a new page
+      postCol.innerHTML = images_html;
     });
 }
 
+//open the image when it is clicked - DONE 
+//tutorial: https://eloquentjavascript.net/15_event.html
+postCol.addEventListener("click", e => {
+  console.log(e.target.src);
+  let url = e.target.src;
+  //open a new page to check
+  var win = window.open(url, '_blank');
+  win.focus();
+});
+postCol.addEventListener("touch", e => {
+  console.log(e.target.src);
+  let url = e.target.src;
+  //open a new page to check
+  var win = window.open(url, '_blank');
+  win.focus();
+});
 
 
-//UPLOAD CANVAS TO SERVER
+
+//UPLOAD CANVAS TO SERVER - DONE 
 upload.addEventListener("click", e => {
 
-  html2canvas(document.body).then(canvas => {
-    document.body.appendChild(canvas);
+  //to save the image, has to use the allowTaint and useCORS from GIT: https://github.com/niklasvh/html2canvas/issues/722
+  html2canvas(document.body, {
+    logging: true,
+    letterRendering: 1,
+    allowTaint: false,
+    useCORS: true
+  }).then(canvas => {
     document.body.appendChild(appDiv);
-
     let payload = {
       image: canvas.toDataURL("image/png"),
-      // crossorigin:"anonymous"
+      crossorigin: "anonymous"
     };
-  
-
     fetch("/upload", {
       method: "POST",
       body: JSON.stringify(payload), // data can be `string` or {object}!
@@ -69,14 +118,13 @@ upload.addEventListener("click", e => {
       }
     }).then(res => res.json()).then(response => {
       console.log("Success:", JSON.stringify(response));
-       // getPosts();
+      // getPosts();
     });
   });
 });
 
-// console.log(trash.style.width,"trash style")
 
-let draggable =false;
+// let draggable =false;
 // position randomly
 let draggables = document.querySelectorAll(".draggable");
 draggables.forEach((element) => {
@@ -89,7 +137,7 @@ draggables.forEach((element) => {
     bounds.height / 2 +
     Math.random() * (window.innerHeight - bounds.height) +
     "px";
-    draggable=true;
+  draggable = true;
 
 });
 
@@ -121,7 +169,7 @@ draggables.forEach((element) => {
 //   // Clear any remaining drag data
 //   dataList.clear();
 // }
-  
+
 // text.addEventListener("dragend",function(){
 //   dragend_handler(trash);
 
@@ -129,19 +177,21 @@ draggables.forEach((element) => {
 
 //click trash and delete one from appdiv
 // more like a redo 
-trash.addEventListener("click",function(){
-let counter=0;
+trash.addEventListener("click", function () {
+  let counter = 0;
 
-  if(counter<appDiv.childElementCount){
+  if (counter < appDiv.childElementCount) {
 
-    appDiv.children[appDiv.childElementCount-1-counter].remove();
+    appDiv.children[appDiv.childElementCount - 1 - counter].remove();
 
-  }else{
-    counter=0;
+  } else {
+    counter = 0;
   }
   counter++;
 
 })
+
+
 
 //drop and clear - inspo https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/ondrop
 
@@ -169,7 +219,9 @@ const input = document.querySelector('input');
 
 input.addEventListener("change", updateImageDisplay);
 
+
 function updateImageDisplay() {
+  // console.log("input selected?")
   const curFiles = input.files;
   if (curFiles.length === 0) {
     console.log('No files currently selected for upload');
@@ -178,9 +230,8 @@ function updateImageDisplay() {
 
     for (const file of curFiles) {
       if (validFileType(file)) {
-        let image = document.createElement('img');
+        image = document.createElement('img');
         image.src = URL.createObjectURL(file);
-        console.log(image.src)
 
         appDiv.innerHTML += `
         <img  crossorigin="anonymous"
@@ -266,26 +317,11 @@ text.addEventListener("touch", function () {
 
 });
 
-
-function deleteItem(){
-  draggables.forEach((element) => {
-    element.parentNode.removeChild(element);
-  });
-}
-
-// trash.addEventListener("click",function(){
-//   deleteItem();
-// })
-// draw on canvas 
-
-
 // change background on canvas - allow webcam and access to your gallery?
 
 
 
 //save everything into an image - can change the size of the image? - ask max 
-
-
 
 
 
@@ -312,6 +348,19 @@ let last_y = 0;
 let clear = document.getElementById("clear");
 let click = "left";
 
+//remove all appDiv elements 
+//reset canvas 
+function removeAllAppDiv() {
+  while (appDiv.firstChild) {
+    appDiv.removeChild(appDiv.lastChild);
+  }
+}
+// clear.addEventListener("click", function () {
+
+//   removeAllAppDiv();
+//   render();
+
+// })
 canvas.addEventListener("mousemove", function (e) {
 
   if (click == "left") {
@@ -370,7 +419,7 @@ canvas.addEventListener("touchmove", function (e) {
 
 function render() {
 
-  // ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.fillStyle = `rgba(${Math.random()*255},${Math.random()*255},${Math.random()*255},0.3)`;
   ctx.globalAlpha = 0.5; //could be performance piece 
   ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -409,7 +458,6 @@ function paintStart(x, y) {
 }
 let effects = ["soft-light", "difference", "exclusion", "luminosity", "color-burn"];
 let index = 0;
-let effectsBtn = document.getElementById("bg");
 ctx.globalCompositeOperation = effects[0];
 
 // effectsBtn.addEventListener("click", function () {
@@ -496,7 +544,7 @@ canvas.addEventListener("touchend", function (evt) {
 //disable right click context menu 
 canvas.oncontextmenu = function (e) {
   e.preventDefault();
-  // e.stopPropagation();
+  e.stopPropagation();
 }
 
 canvas.addEventListener("mousedown", function (e) {

@@ -9,12 +9,10 @@ app.use(express.static("src"));
 
 
 // app.use(bodyParser.json());
-app.use(bodyParser.json({limit: '10mb', extended: true}));//avoid payload too large issue 
+app.use(bodyParser.json({limit: '5mb', extended: true}));//avoid payload too large issue 
 app.use("/uploaded", express.static(upload_folder));
 app.use('/src', express.static('src'));
 app.use('/tmp', express.static('tmp'));
-
- 
 app.use('/assets', express.static('assets'));
 app.get('/', function(req, res){
   res.sendFile(__dirname+'/index.html'); // change the path to your index.html
@@ -31,7 +29,6 @@ app.get("/posts", (req, res) => {
 // Upload post route
 app.post("/upload", (req, res) => {
   const { image } = req.body;
-
   var base64Data = image.replace(/^data:image\/png;base64,/, "");
 
   let id = Math.random()

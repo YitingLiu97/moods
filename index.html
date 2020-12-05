@@ -34,8 +34,6 @@
     <meta property="og:image:width" content="300" />
     <meta property="og:image:height" content="200" /> -->
     <meta property="article:author" content="Yiting Liu" />
-
-
     <script src="src/js/html2canvas.js"></script>
     <!-- A mood diary that allows you to draw, take picture, and write. Then share to others or keep it a secret to yourself.  -->
 </head>
@@ -44,60 +42,69 @@
 
     <!-- more contenteditable trick: https://css-tricks.com/text-effects-css-little-contenteditable-trick/ -->
 
+    
+    <div id="title">
+        <h1>Moods Journal by <a href="https://yitingliu.com/"> Yiting Liu</a></h1>
+    </div>
+
+    <!-- have to make the object aboslute to be moved -->
+    
+    <div id="canvasWrapper">
+        <canvas id="canvas"></canvas>
+    </div>
     <div id="app">
         <!-- <img  crossorigin="anonymous" class="draggable"src="assets/picCollageUI.png"  alt=""> -->
 
     </div>
 
-    <div id="title">
-        <h1>Moods</h1>
-        <p>A moods-material journal made by <a href="https://yitingliu.com/"> Yiting Liu</a></p>
-    </div>
-
-    <!-- have to make the object aboslute to be moved -->
-    <div id="canvasWrapper">
-        <canvas id="canvas"></canvas>
-    </div>
-
 
     <div id="selections">
         <div id="bgSelections">
-            <button id="bg">bg</button>
+            <button id="bg">
+                <img src="assets/icons/uploadfromphone.png" alt="">
 
+            </button>
             <input id="picture" type="file" accept=".jpg, .jpeg, .png" multiple capture="camera">
-
         </div>
-        <button id="upload">upload</button>
-        <button id="text">text</button>
-        <button id="posts">posts</button>
-
-        <!-- <button id="draw">draw</button> -->
-        <button id="clear">clear</button>
-        <button id="trash">trash</button>
-
-        <!-- <button id="save">save</button> -->
-        <!-- <input id="picture"  type="file" accept="image/*" capture="camera"> -->
-
-        <!-- <button id='takePhotoButton' disabled>Take Photo</button> -->
+        <button id="text">
+            <img src="assets/icons/text.png" alt="">
+        </button>
 
     </div>
-    <!--  
-    
-    <div id="choices">
-        <button id="back">back</button>
-        <button id="save">save</button>
-        <button id="clear">clear</button>
-        <button id="trash">trash</button>
-    </div>
-    -->
+
+<div id="topSel">
+ 
+    <!-- back -->
+    <button id="trash">
+        <img src="assets/icons/trash.png" alt="">
+
+    </button>
+       <!-- save -->
+       <button id="upload">
+        <img src="assets/icons/save.png" alt="">
+
+       </button>
+<!-- collections -->
+<button id="posts">
+    <img src="assets/icons/collections.png" alt="">
+
+</button>
+
+</div>
+
+    <!-- <div id="postCol">
+
+    </div> -->
+    <div id="postCol">
+        
+       <!-- <div> <img src="tmp/05717389.png"></div>
+       <div> <img src="tmp/25662620.png"></div>
+        <div>   <img src="tmp/59301999.png"></div>
+            <div> <img src="tmp/90286954.png"></div> -->
+</div>
 
 
-    <!-- <footer>
-        <p>proudly created by Yiting Liu.</p>
-    </footer> -->
     <script type="module" src="src/js/index.js"></script>
-    <!-- <script src="src/js/imageCapture.js"></script> -->
-    <!-- <script type="module"src="src/js/index.js"></script> -->
 
 </body>
 
