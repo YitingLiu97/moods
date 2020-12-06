@@ -4,6 +4,8 @@ A journal of my **material and color journey on emotions.**
 
 # Demo
 
+![Moods Journal Demo](https://youtu.be/sKdJe8uR-dU)
+
 ![assets/demo.png](assets/demo.png)
 # [Play](https://moods101.netlify.app/)
 
@@ -61,7 +63,6 @@ They are limited to the canvas of their phone since they can not scroll in the c
 
 # Progress
 
-
 **Accomplishments by 11/15** 
 
 1. Manipulating of size, scale, rotation
@@ -82,6 +83,7 @@ app.get('/', function(req, res){
 1. [Possible saving text to canvas](https://stackoverflow.com/questions/31570798/how-to-make-html-div-with-text-over-image-downloadable-savable-for-users)
 
 2. [npm library to save html to canvas](http://html2canvas.hertzen.com/)
+3. [For smoother touch](https://five.agency/cross-platform-javascript-touch-scrolling/)
 
 **Next Steps From 11/21, Done by 12/5** 
 
@@ -91,13 +93,20 @@ app.get('/', function(req, res){
 4. sharable with friends 
 5. better UI (done)
 6. potential for music in the bg 
+7. Need to fix mobile touch problem for the collections. They can not touch to scroll. 
 
 **Accomplishments by 12/5** 
 
 1. Able to trash indivial element upon click 
 2. Save the uploaded image to canvas through [html2canvas](http://html2canvas.hertzen.com/). It has to do with AllowTaint and useCORS. For more details, see [here](https://github.com/niklasvh/html2canvas/issues/722). 
 3. Change the UI completely to make it minimalistic. Inspiration is originally from the template of [Sanity Sketching kit](https://www.figma.com/community/file/898186441853776318)
-
+4. Merging dev to master. Follow this [tutorial](https://medium.com/@amitmutrezas/git-replace-the-master-branch-with-a-feature-branch-eb30e984bd5c). 
+5. Problem of having the collections of posts showing up. Turns out I need to replace the script in package.json
+```javascript
+ "scripts": {
+    "start": "node server.js"
+  }
+```
 
 # Research
 
