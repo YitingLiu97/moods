@@ -4,9 +4,9 @@ A journal of my **material and color journey on emotions.**
 
 # Demo
 
-![Moods Journal Demo](https://youtu.be/sKdJe8uR-dU)
+[Moods Journal Demo Video](https://youtu.be/sKdJe8uR-dU)
 
-![assets/demo.png](assets/demo.png)
+<!-- ![assets/demo.png](assets/demo.png) -->
 # [Play](https://moods101.netlify.app/)
 
 # UI 
