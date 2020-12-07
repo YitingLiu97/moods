@@ -37,7 +37,7 @@ app.post("/upload", (req, res) => {
 
 //append 0 before to make 2 digits [https://stackoverflow.com/questions/8043026/how-to-format-numbers-by-prepending-0-to-single-digit-numbers]
   let y = idTime.getFullYear();
-  let month = ("0" + idTime.getMonth()).slice(-2);
+  let month = ("0" + idTime.getMonth()+1).slice(-2);//calling .getMonth() in may will return 4 and not 5. [https://stackoverflow.com/questions/10211145/getting-current-date-and-time-in-javascript]
   let day = ("0" + idTime.getDate()).slice(-2);
   let h = ("0" + idTime.getHours()).slice(-2);
   let m = ("0" + idTime.getMinutes()).slice(-2);
