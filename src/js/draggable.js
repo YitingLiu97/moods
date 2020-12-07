@@ -101,7 +101,7 @@ document.body.addEventListener("mousemove", function (ev) {
 document.body.addEventListener(
   "touchmove",
   function (ev) {
-    ev.preventDefault();
+    // ev.preventDefault();
     moveAction(ev);
   },
   { passive: false }

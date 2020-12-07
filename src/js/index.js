@@ -338,16 +338,16 @@ function removeAllAppDiv() {
 function norm_random(size) {
   return (Math.random() - 0.5) * size;
 }
-let ctx = canvas.getContext("2d");
+// let ctx = canvas.getContext("2d");
 
 
-function render() {
+// function render() {
 
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = `rgba(${Math.random()*255},${Math.random()*255},${Math.random()*255},0.3)`;
-  ctx.globalAlpha = 0.5; //could be performance piece 
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-}
+//   ctx.clearRect(0, 0, canvas.width, canvas.height);
+//   ctx.fillStyle = `rgba(${Math.random()*255},${Math.random()*255},${Math.random()*255},0.3)`;
+//   ctx.globalAlpha = 0.5; //could be performance piece 
+//   ctx.fillRect(0, 0, canvas.width, canvas.height);
+// }
 
 // change background on canvas - allow webcam and access to your gallery?
 
