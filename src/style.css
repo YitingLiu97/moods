@@ -122,7 +122,7 @@ img.draggable {
     overflow: visible;
     /* z-index: 20; */
     grid-area: auto;
-    background-color: red;
+    /* background-color: red; */
    overflow: auto;
    /* position: absolute; */
 
