@@ -84,23 +84,24 @@ function getPosts() {
 //tutorial: https://eloquentjavascript.net/15_event.html
 postCol.addEventListener("click", e => {
   console.log(e.target.src);
- 
+
   let url = e.target.src;
   //open a new page to check
-  if(url){
-
-
-  var win = window.open(url, '_blank');
-  win.focus();
-  }});
+  if (url) {
+    var win = window.open(url, '_blank');
+    win.focus();
+  }
+});
 postCol.addEventListener("touch", e => {
   console.log(e.target.src);
+
   let url = e.target.src;
   //open a new page to check
-  var win = window.open(url, '_blank');
-  win.focus();
+  if (url) {
+    var win = window.open(url, '_blank');
+    win.focus();
+  }
 });
-
 
 
 //UPLOAD CANVAS TO SERVER - DONE 
@@ -332,7 +333,8 @@ text.addEventListener("touch", function () {
 //save everything into an image - can change the size of the image? - ask max 
 
 
-
+//COMMENT THIS OUT - CANVAS DRAWING
+/*******
 
 //basic touch events 
 // let canvas = document.getElementById("canvas");
@@ -569,6 +571,7 @@ canvas.addEventListener("mousedown", function (e) {
 
 });
 
+****/
 
 // save.addEventListener("click", function () {
 //     console.log("save!");

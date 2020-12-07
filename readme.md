@@ -79,11 +79,6 @@ app.get('/', function(req, res){
   res.sendFile(__dirname+'/'); // change the path 
 });
 
-***Tutorials***
-1. [Possible saving text to canvas](https://stackoverflow.com/questions/31570798/how-to-make-html-div-with-text-over-image-downloadable-savable-for-users)
-
-2. [npm library to save html to canvas](http://html2canvas.hertzen.com/)
-3. [For smoother touch](https://five.agency/cross-platform-javascript-touch-scrolling/)
 
 **Next Steps From 11/21, Done by 12/5** 
 
@@ -107,6 +102,21 @@ app.get('/', function(req, res){
     "start": "node server.js"
   }
 ```
+
+
+***Tutorials***
+1. [Possible saving text to canvas](https://stackoverflow.com/questions/31570798/how-to-make-html-div-with-text-over-image-downloadable-savable-for-users)
+
+2. [npm library to save html to canvas](http://html2canvas.hertzen.com/)
+3. [For smoother touch](https://five.agency/cross-platform-javascript-touch-scrolling/)
+
+****Tutorials for setting up server****
+I have to set up a server since I hosted this on heroku before and I was told Heroku will occasionally delete stored files. 
+1. [Setting up a virtual host on digital ocean.](https://itp.nyu.edu/networks/setting-up-a-virtual-host/)Use passwd rather than ssh for easier access.
+2. Make sure the code works and then git clone your repo to your server
+3. Make sure server port is 8080
+4. GoDaddy setting up DNS to replace the virtual IP host name. Go to My Domains > Domain Settings > DNS. Under Records, add Type A following below.
+![assets/godaddyDNS.png](assets/godaddyDNS.png)
 
 # Research
 
