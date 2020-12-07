@@ -4,7 +4,7 @@ A journal of my **material and color journey on emotions.**
 
 # Demo
 
-## [Moods Journal Demo Video](https://youtu.be/sKdJe8uR-dU)##
+## [Moods Journal Demo Video](https://youtu.be/sKdJe8uR-dU)
 
 <!-- ![assets/demo.png](assets/demo.png) -->
 # [Play](https://moods101.netlify.app/)
@@ -121,12 +121,11 @@ I have to set up a server since I hosted this on heroku before and I was told He
 
 # Research
 
-I did research on ProjectLife and PicCollage. Some of the pros and cons I learned from playing with them are as below:
+I did research on [ProjectLife](https://play.google.com/store/apps/details?id=com.beckyhiggins.projectlife&hl=en_US&gl=US) and [PicCollage](https://play.google.com/store/apps/details?id=com.cardinalblue.piccollage.google&hl=en_US&gl=US). Some of the pros and cons I learned from playing with them are as below:
 
 1. You can search image on the web and input it to the canvas
 2. They have grid system where you can put images to the chosen grid 
 3. Adaptable size for different social media platforms to share
 4. Customizable in terms of color, patterns
 5. Tutorial UI example from picCollage 
-
-![assets/picCollageUI.png](assets/picCollageUI.png)
+![assets/picCollageUI.png](assets/picCollageUI.png =250x)

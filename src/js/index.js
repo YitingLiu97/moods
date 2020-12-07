@@ -1,3 +1,13 @@
+/***problems 
+1. when zooming the images, the canvas is weird 
+2. add notification when it is saved - DONE 12/7/2020
+3. set the time when the image is stored? - DONE 12/7/2020
+4. add tags and timestamp the image 
+5. drag and clear 
+6. able to delete post? // only administrator me can delete it 
+7. fix the touchmove ev preventdefault here - couldn't 12/7/2020
+***/
+
 import {
   distance,
   scale,
@@ -17,6 +27,20 @@ import {} from "./draggable.js";
 
 
 let canvas = document.getElementById("canvas");
+let ctx = canvas.getContext("2d");
+
+let pixelRatio = 1.5;
+canvas.width = window.innerWidth * pixelRatio;
+canvas.height = window.innerHeight * pixelRatio;
+let p1 = {
+  x: canvas.width / 2.5,
+  y: canvas.height / 2.5
+};
+let p2 = {
+  x: canvas.width / 4,
+  y: canvas.height / 4
+};
+
 let upload = document.getElementById("upload");
 let posts = document.getElementById("posts");
 let title = document.getElementById("title");
@@ -31,40 +55,44 @@ let appDiv = document.getElementById('app');
 // getPosts();
 let image;
 let postCol = document.getElementById("postCol");
+let savedText = document.getElementById("savedText");
 
+render();
+
+savedText.innerHTML = "";
 posts.addEventListener("click", function () {
-  // console.log(title.innerHTML)
+
+  //reset everything 
+  savedText.innerHTML = "";
+  removeAllAppDiv();
+render();
+  getPosts();
+
+  console.log("working?")
 
   if (title.innerHTML == `        <h1>Moods Journal by <a href="https://www.yitingliu.com/"> Yiting Liu</a> | <a href="https://github.com/YitingLiu97/moods">code</a> </h1> 
-`) {
+  `) {
     title.innerHTML = `        <h1>Sacred Collections by <a href="https://www.yitingliu.com/"> Yiting Liu</a> | <a href="https://github.com/YitingLiu97/moods">code</a> </h1> 
-    `; //change Moods to Collections
+      `; //change Moods to Collections
     postCol.style.display = "grid";
     document.body.style.overflowY = "visible";
 
   } else {
     title.innerHTML = `        <h1>Moods Journal by <a href="https://www.yitingliu.com/"> Yiting Liu</a> | <a href="https://github.com/YitingLiu97/moods">code</a> </h1> 
-`; //change to Moods
+  `; //change to Moods
     postCol.style.display = "none";
     document.body.style.overflowY = "hidden";
   }
-
-  getPosts();
-  removeAllAppDiv();
-  // render();
 
   //hover on to each div will show your the full picture 
   //can return to the collections page or add a new one? 
 });
 
+let recentID;
+let borderS;
+let recentIDContent;
 
-postCol.addEventListener("touchmove", function () {
-  console.log("touchmove")
-})
-
-
-
-
+let id, idArr;
 // fetch posts from server
 function getPosts() {
 
@@ -73,15 +101,27 @@ function getPosts() {
       method: "GET"
     }).then(res => res.json())
     .then(response => {
+      // shows chronologically but how to highlight the recent one?
       let images_html = response
         .map(file_url => {
-          return `<div><img  src="uploaded/${file_url}"></div>`;
+          // converting 2020-10-20-13-12-10.png to 2020-10-20 13:12:10 - need to format in server.js as [let month = ("0" + idTime.getMonth()).slice(-2);]
+          id = file_url.replace(".png", "");
+          idArr = id.split('-');
+          recentIDContent = `${idArr[0]}/${idArr[1]}/${idArr[2]} ${idArr[3]}:${idArr[4]}:${idArr[5]}`;
+
+          return `<div>
+          <img style=${borderS} src="uploaded/${file_url}">
+          <p> ${recentIDContent} </p>
+          </div>`;
         })
         .join("\n");
       //create a new page
       postCol.innerHTML = images_html;
+
     });
 }
+
+
 
 //open the image when it is clicked - DONE 
 //tutorial: https://eloquentjavascript.net/15_event.html
@@ -130,13 +170,29 @@ upload.addEventListener("click", e => {
       }
     }).then(res => res.json()).then(response => {
       console.log("Success:", JSON.stringify(response));
-      // getPosts();
+      id = JSON.stringify(response.id);
+      recentID = `${id}.png`;
+      //highlight the recen id thing- scroll to recent id? 
+    }).then(function () {
+      savedText.innerHTML = 'mood saved.'
+
+      console.log("saved?")
+      // changeTitle();
+      removeAllAppDiv();
+      getPosts();
+      postCol.style.display = "grid";
+
+      // removeAllAppDiv();
     });
+
+
+
   });
 });
 
 
-let draggable =false;
+
+let draggable = false;
 // position randomly
 let draggables = document.querySelectorAll(".draggable");
 draggables.forEach((element) => {
@@ -338,16 +394,15 @@ function removeAllAppDiv() {
 function norm_random(size) {
   return (Math.random() - 0.5) * size;
 }
-// let ctx = canvas.getContext("2d");
 
 
-// function render() {
+function render() {
 
-//   ctx.clearRect(0, 0, canvas.width, canvas.height);
-//   ctx.fillStyle = `rgba(${Math.random()*255},${Math.random()*255},${Math.random()*255},0.3)`;
-//   ctx.globalAlpha = 0.5; //could be performance piece 
-//   ctx.fillRect(0, 0, canvas.width, canvas.height);
-// }
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = `rgba(${Math.random()*255},${Math.random()*255},${Math.random()*255},0.3)`;
+  ctx.globalAlpha = 0.5; //could be performance piece 
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+}
 
 // change background on canvas - allow webcam and access to your gallery?
 
@@ -360,19 +415,8 @@ function norm_random(size) {
 /*******
 
 //basic touch events 
-// let canvas = document.getElementById("canvas");
 
-let pixelRatio = 1.5;
-canvas.width = window.innerWidth * pixelRatio;
-canvas.height = window.innerHeight * pixelRatio;
-let p1 = {
-  x: canvas.width / 2.5,
-  y: canvas.height / 2.5
-};
-let p2 = {
-  x: canvas.width / 4,
-  y: canvas.height / 4
-};
+
 
 let penDown = false;
 let last_x = 0;

@@ -11,6 +11,8 @@
     font-family: 'Reenie Beanie', cursive;
     font-family: 'Rye', cursive;
     font-family: 'Vast Shadow', cursive;
+    max-height: 100vh;
+    max-width: 100vw;
 
 }
 
@@ -37,8 +39,11 @@ input {
 
 html,
 body {
-    min-height: 100vh;
+    /* max-height: 100vh;
+   max-width: 100vw;
+    height: -webkit-fill-available; */
     height: -webkit-fill-available;
+
     overflow: hidden;
 }
 
@@ -122,38 +127,47 @@ img.draggable {
     min-height: 80vh;
     grid-area: auto;
     overflow-y: scroll;
-    /* overflow: touch; */
-    -webkit-overflow-scrolling: touch;
+    overflow: touch;
+    /* -webkit-overflow-scrolling: touch; */
 
 }
 
 #postCol>div {
     position: relative;
-
     display: flex;
-    align-items: center;
-    /* Vertical center of image & text */
-    /* background-color: orange; */
-    justify-content: center;
+    flex-flow: column wrap;
+    justify-content: flex-start;
+    /* opacity: 0.5; */
+    height: auto;
     align-content: center;
     align-items: center;
-    /* width: 100px;
-    height: 100px; */
+    border-bottom: dotted black 2pt;
+    color: black;
+    /* cursor: pointer; */
 
 }
 
 #postCol>div img {
-
     /* grid-area: 1 / 1 / 4 / 4; */
     grid-area: auto;
     max-width: 100%;
     height: auto;
-    display: block;
+    display: inline-block;
     margin: auto 0;
-    align-self: center; /* vertical centering */
-    align-items: center; /* vertical centering */
+    align-self: center;
+    /* vertical centering */
+    align-items: center;
+    /* vertical centering */
+    cursor: pointer;
 
 }
+
+#postCol>div p {
+    cursor: pointer;
+}
+
+
+
 
 #topSel {
     padding: 0 2.5vw;
@@ -167,11 +181,14 @@ img.draggable {
     align-items: center;
     align-self: center;
     z-index: 10;
+
 }
 
 button>img {
     width: 40px;
     height: 40px;
+    cursor: pointer;
+
 }
 
 #selections {

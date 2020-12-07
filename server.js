@@ -20,7 +20,10 @@ app.get('/', function(req, res){
 // // get list of posts
 app.get("/posts", (req, res) => {
   fs.promises.readdir(upload_folder).then(files => {  
-    res.send(JSON.stringify(files));
+    console.log(JSON.stringify(files.sort()));
+
+    //reverse shows the latested on top 
+    res.send(JSON.stringify(files.sort()));
   });
 
 });
@@ -30,10 +33,23 @@ app.post("/upload", (req, res) => {
   const { image } = req.body;
   var base64Data = image.replace(/^data:image\/png;base64,/, "");
 
-  let id = Math.random()
-    .toFixed(8)
-    .toString()
-    .slice(2);
+  let idTime = new Date();
+
+//append 0 before to make 2 digits [https://stackoverflow.com/questions/8043026/how-to-format-numbers-by-prepending-0-to-single-digit-numbers]
+  let y = idTime.getFullYear();
+  let month = ("0" + idTime.getMonth()).slice(-2);
+  let day = ("0" + idTime.getDate()).slice(-2);
+  let h = ("0" + idTime.getHours()).slice(-2);
+  let m = ("0" + idTime.getMinutes()).slice(-2);
+  let s = ("0" + idTime.getSeconds()).slice(-2);
+
+  let id = `${y}-${month}-${day}-${h}-${m}-${s}`;
+  
+  console.log("id", id)
+  // let id = Math.random()
+  //   .toFixed(8)
+  //   .toString()
+  //   .slice(2);
 
   fs.writeFile(`${upload_folder}/${id}.png`, base64Data, "base64", err =>
     console.log(err)

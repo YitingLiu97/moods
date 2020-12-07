@@ -98,6 +98,7 @@ document.body.addEventListener("mousemove", function (ev) {
   moveAction(ev);
 });
 
+//comment out ev.preventdefault to get the touch scrolling on postcol 
 document.body.addEventListener(
   "touchmove",
   function (ev) {
