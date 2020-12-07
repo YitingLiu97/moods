@@ -7,7 +7,6 @@ const app = express();
 const upload_folder = "tmp";
 app.use(express.static("src"));
 
-
 // app.use(bodyParser.json());
 app.use(bodyParser.json({limit: '5mb', extended: true}));//avoid payload too large issue 
 app.use("/uploaded", express.static(upload_folder));

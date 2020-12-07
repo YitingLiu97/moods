@@ -20,6 +20,17 @@ let canvas = document.getElementById("canvas");
 let upload = document.getElementById("upload");
 let posts = document.getElementById("posts");
 let title = document.getElementById("title");
+//click on post to see the full image 
+// can delete it as well 
+// let bg = document.getElementById("bg");
+let text = document.getElementById("text");
+// let draw = document.getElementById("draw");
+// let save = document.getElementById("save");
+let trash = document.getElementById("trash");
+let appDiv = document.getElementById('app');
+// getPosts();
+let image;
+let postCol = document.getElementById("postCol");
 
 posts.addEventListener("click", function () {
   console.log(title.children[0].innerHTML)
@@ -44,18 +55,11 @@ posts.addEventListener("click", function () {
 });
 
 
+postCol.addEventListener("touchmove",function(){
+console.log("touchmove")
+})
 
-//click on post to see the full image 
-// can delete it as well 
-// let bg = document.getElementById("bg");
-let text = document.getElementById("text");
-// let draw = document.getElementById("draw");
-// let save = document.getElementById("save");
-let trash = document.getElementById("trash");
-let appDiv = document.getElementById('app');
-// getPosts();
-let image;
-let postCol = document.getElementById("postCol");
+
 
 
 // fetch posts from server
@@ -80,19 +84,24 @@ function getPosts() {
 //tutorial: https://eloquentjavascript.net/15_event.html
 postCol.addEventListener("click", e => {
   console.log(e.target.src);
+
   let url = e.target.src;
   //open a new page to check
-  var win = window.open(url, '_blank');
-  win.focus();
+  if (url) {
+    var win = window.open(url, '_blank');
+    win.focus();
+  }
 });
 postCol.addEventListener("touch", e => {
   console.log(e.target.src);
+
   let url = e.target.src;
   //open a new page to check
-  var win = window.open(url, '_blank');
-  win.focus();
+  if (url) {
+    var win = window.open(url, '_blank');
+    win.focus();
+  }
 });
-
 
 
 //UPLOAD CANVAS TO SERVER - DONE 
@@ -324,7 +333,8 @@ text.addEventListener("touch", function () {
 //save everything into an image - can change the size of the image? - ask max 
 
 
-
+//COMMENT THIS OUT - CANVAS DRAWING
+/*******
 
 //basic touch events 
 // let canvas = document.getElementById("canvas");
@@ -561,6 +571,7 @@ canvas.addEventListener("mousedown", function (e) {
 
 });
 
+****/
 
 // save.addEventListener("click", function () {
 //     console.log("save!");
