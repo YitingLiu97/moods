@@ -1,7 +1,24 @@
+//import dotenv from "dotenv";
+//import rp from "request-promise-native";
+
+//require('dotenv').config();
+
+//const _GET = path => {
+  //  return rp({
+    //    method: "GET",
+        uri: `https://api.digitalocean.com/v2${path}`,
+        headers: {
+            Authorization: `Bearer ${process.env.DO_TOKEN}`,
+            "Content-Type": "application/json"
+        },
+        json: true
+    });
+};
+
 const fs = require("fs");
 const express = require("express");
 const bodyParser = require("body-parser");
-const port = process.env.PORT||8080;
+const port = process.env.PORT||5500;
 const app = express();
 
 const upload_folder = "tmp";
