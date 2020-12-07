@@ -33,15 +33,18 @@ let image;
 let postCol = document.getElementById("postCol");
 
 posts.addEventListener("click", function () {
-  // console.log(title.children[0].innerHTML)
+  // console.log(title.innerHTML)
 
-  if (title.children[0].innerHTML == `Moods Journal by <a href="https://yitingliu.com/"> Yiting Liu</a>`) {
-    title.children[0].innerHTML = "Sacred Collections"; //change Moods to Collections
+  if (title.innerHTML == `        <h1>Moods Journal by <a href="https://www.yitingliu.com/"> Yiting Liu</a> | <a href="https://github.com/YitingLiu97/moods">code</a> </h1> 
+`) {
+    title.innerHTML = `        <h1>Sacred Collections by <a href="https://www.yitingliu.com/"> Yiting Liu</a> | <a href="https://github.com/YitingLiu97/moods">code</a> </h1> 
+    `; //change Moods to Collections
     postCol.style.display = "grid";
     document.body.style.overflowY = "visible";
 
   } else {
-    title.children[0].innerHTML = `Moods Journal by <a href="https://yitingliu.com/"> Yiting Liu</a>`; //change to Moods
+    title.innerHTML = `        <h1>Moods Journal by <a href="https://www.yitingliu.com/"> Yiting Liu</a> | <a href="https://github.com/YitingLiu97/moods">code</a> </h1> 
+`; //change to Moods
     postCol.style.display = "none";
     document.body.style.overflowY = "hidden";
   }
@@ -55,8 +58,8 @@ posts.addEventListener("click", function () {
 });
 
 
-postCol.addEventListener("touchmove",function(){
-console.log("touchmove")
+postCol.addEventListener("touchmove", function () {
+  console.log("touchmove")
 })
 
 
