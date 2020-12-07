@@ -33,7 +33,7 @@ let image;
 let postCol = document.getElementById("postCol");
 
 posts.addEventListener("click", function () {
-  console.log(title.children[0].innerHTML)
+  // console.log(title.children[0].innerHTML)
 
   if (title.children[0].innerHTML == `Moods Journal by <a href="https://yitingliu.com/"> Yiting Liu</a>`) {
     title.children[0].innerHTML = "Sacred Collections"; //change Moods to Collections
@@ -48,7 +48,7 @@ posts.addEventListener("click", function () {
 
   getPosts();
   removeAllAppDiv();
-  render();
+  // render();
 
   //hover on to each div will show your the full picture 
   //can return to the collections page or add a new one? 
@@ -332,6 +332,19 @@ function removeAllAppDiv() {
   }
 }
 
+function norm_random(size) {
+  return (Math.random() - 0.5) * size;
+}
+let ctx = canvas.getContext("2d");
+
+
+function render() {
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = `rgba(${Math.random()*255},${Math.random()*255},${Math.random()*255},0.3)`;
+  ctx.globalAlpha = 0.5; //could be performance piece 
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+}
 
 // change background on canvas - allow webcam and access to your gallery?
 
@@ -345,7 +358,6 @@ function removeAllAppDiv() {
 
 //basic touch events 
 // let canvas = document.getElementById("canvas");
-let ctx = canvas.getContext("2d");
 
 let pixelRatio = 1.5;
 canvas.width = window.innerWidth * pixelRatio;
@@ -430,13 +442,6 @@ canvas.addEventListener("touchmove", function (e) {
 
 });
 
-function render() {
-
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = `rgba(${Math.random()*255},${Math.random()*255},${Math.random()*255},0.3)`;
-  ctx.globalAlpha = 0.5; //could be performance piece 
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-}
 
 // clear.addEventListener("click", function () {
 //     render();
@@ -445,9 +450,6 @@ function render() {
 
 render();
 
-function norm_random(size) {
-  return (Math.random() - 0.5) * size;
-}
 
 // draw a line between  two touch points 
 // angle determines thickness

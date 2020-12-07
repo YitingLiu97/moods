@@ -107,30 +107,31 @@ img.draggable {
     right: 0;
     display: none;
     bottom: 120px;
-    /* bottom: 7vh; */
     /* display: grid; */
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+    /* grid-template-rows: repeat(3, 1fr); */
     grid-column-gap: 20px;
     grid-row-gap: 20px;
     grid-area: center;
-    justify-content: center;
+    /* justify-content: center;
     align-content: center;
-    align-items: center;
+    align-items: center; */
     /* position: relative; */
     width: 100%;
     height: 95vh;
     overflow: visible;
     /* z-index: 20; */
     grid-area: auto;
-    /* background-color: red; */
-   overflow: touch;
+    background-color: red;
+   overflow: auto;
    /* position: absolute; */
 
 
 }
 
 #postCol>div {
+    position: relative;
+
     display: flex;
     align-items: center;
     /* Vertical center of image & text */
@@ -145,8 +146,10 @@ img.draggable {
 
 #postCol>div img {
 
-    grid-area: 1 / 1 / 4 / 4;
+    /* grid-area: 1 / 1 / 4 / 4; */
+    grid-area: auto;
     max-width: 100%;
+    height: auto;
     display: block;
     margin: auto 0;
     align-self: center; /* vertical centering */
