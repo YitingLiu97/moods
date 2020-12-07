@@ -326,6 +326,13 @@ text.addEventListener("touch", function () {
 
 });
 
+function removeAllAppDiv() {
+  while (appDiv.firstChild) {
+    appDiv.removeChild(appDiv.lastChild);
+  }
+}
+
+
 // change background on canvas - allow webcam and access to your gallery?
 
 
@@ -360,11 +367,7 @@ let click = "left";
 
 //remove all appDiv elements 
 //reset canvas 
-function removeAllAppDiv() {
-  while (appDiv.firstChild) {
-    appDiv.removeChild(appDiv.lastChild);
-  }
-}
+
 // clear.addEventListener("click", function () {
 
 //   removeAllAppDiv();
