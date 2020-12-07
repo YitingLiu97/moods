@@ -21,18 +21,18 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Bungee+Inline&family=Caveat+Brush&family=Finger+Paint&family=Nanum+Brush+Script&family=Raleway+Dots&family=Reenie+Beanie&family=Rye&family=Vast+Shadow&display=swap"
         rel="stylesheet">
-
     <link href="./assets/favicon.ico" rel="icon" type="image/x-icon" />
     <meta name="keywords"
         content="pattern, material,draw, moods, feelings, emotions, journal, diary, app, website, sketch, user experience, user interface, design, playful, touch, fingers, mouse, click, rotate, scale, size, zoom , pinch">
     <meta name="author" content="Yiting Liu">
-    <meta property="og:url" content="https://moods101.netlify.app/" />
+    <meta property="og:url" content="http://moods.yitingliu.com:8080/" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="upload images and write texts for your mood journal" />
+    <meta property="og:title" content="Moods Journal Incognito" />
     <meta property="og:description" content="A mood journal to record images and texts." />
-    <!-- <meta property="og:image" content="https://moods101.netlify.app/assets/ogimage.png" />
+    <meta property="og:image" content="http://moods.yitingliu.com:8080/uploaded/73488665.png" />
+    <!-- change the link  -->
     <meta property="og:image:width" content="300" />
-    <meta property="og:image:height" content="200" /> -->
+    <meta property="og:image:height" content="200" />
     <meta property="article:author" content="Yiting Liu" />
     <script src="src/js/html2canvas.js"></script>
     <!-- A mood diary that allows you to draw, take picture, and write. Then share to others or keep it a secret to yourself.  -->
@@ -42,13 +42,13 @@
 
     <!-- more contenteditable trick: https://css-tricks.com/text-effects-css-little-contenteditable-trick/ -->
 
-    
     <div id="title">
-        <h1>Moods Journal by <a href="https://www.yitingliu.com/"> Yiting Liu</a> | <a href="https://github.com/YitingLiu97/moods">code</a> </h1> 
+        <h1>Moods Journal by <a href="https://www.yitingliu.com/"> Yiting Liu</a> | <a
+                href="https://github.com/YitingLiu97/moods">code</a> </h1>
     </div>
 
     <!-- have to make the object aboslute to be moved -->
-    
+
     <div id="canvasWrapper">
         <canvas id="canvas"></canvas>
     </div>
@@ -72,36 +72,33 @@
 
     </div>
 
-<div id="topSel">
- 
-    <!-- back -->
-    <button id="trash">
-        <img src="assets/icons/trash.png" alt="">
+    <div id="topSel">
 
-    </button>
-       <!-- save -->
-       <button id="upload">
-        <img src="assets/icons/save.png" alt="">
+        <!-- back -->
+        <button id="trash">
+            <img src="assets/icons/trash.png" alt="">
 
-       </button>
-<!-- collections -->
-<button id="posts">
-    <img src="assets/icons/collections.png" alt="">
+        </button>
+        <!-- save -->
+        <button id="upload">
+            <img src="assets/icons/save.png" alt="">
 
-</button>
+        </button>
+        <!-- collections -->
+        <button id="posts">
+            <img src="assets/icons/collections.png" alt="">
 
-</div>
+        </button>
 
-    <!-- <div id="postCol">
+    </div>
 
-    </div> -->
     <div id="postCol">
-        
-       <!-- <div> <img src="tmp/05717389.png"></div>
+
+        <!-- <div> <img src="tmp/05717389.png"></div>
        <div> <img src="tmp/25662620.png"></div>
         <div>   <img src="tmp/59301999.png"></div>
             <div> <img src="tmp/90286954.png"></div> -->
-</div>
+    </div>
 
 
     <script type="module" src="src/js/index.js"></script>
