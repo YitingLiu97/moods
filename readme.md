@@ -4,7 +4,7 @@ A journal of my **material and color journey on emotions.**
 
 # Demo
 
-[Moods Journal Demo Video](https://youtu.be/sKdJe8uR-dU)
+## [Moods Journal Demo Video](https://youtu.be/sKdJe8uR-dU)##
 
 <!-- ![assets/demo.png](assets/demo.png) -->
 # [Play](https://moods101.netlify.app/)
@@ -111,10 +111,11 @@ app.get('/', function(req, res){
 3. [For smoother touch](https://five.agency/cross-platform-javascript-touch-scrolling/)
 
 ****Tutorials for setting up server****
+
 I have to set up a server since I hosted this on heroku before and I was told Heroku will occasionally delete stored files. 
 1. [Setting up a virtual host on digital ocean.](https://itp.nyu.edu/networks/setting-up-a-virtual-host/)Use passwd rather than ssh for easier access.
 2. Make sure the code works and then git clone your repo to your server
-3. Make sure server port is 8080
+3. Make sure server port is 8080. User [forever](https://www.npmjs.com/package/forever) to keep the server running. 
 4. GoDaddy setting up DNS to replace the virtual IP host name. Go to My Domains > Domain Settings > DNS. Under Records, add Type A following below.
 ![assets/godaddyDNS.png](assets/godaddyDNS.png)
 
