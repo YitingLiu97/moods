@@ -136,7 +136,7 @@ upload.addEventListener("click", e => {
 });
 
 
-// let draggable =false;
+let draggable =false;
 // position randomly
 let draggables = document.querySelectorAll(".draggable");
 draggables.forEach((element) => {
