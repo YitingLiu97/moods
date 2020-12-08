@@ -28,7 +28,7 @@ import {} from "./draggable.js";
 
 let canvas = document.getElementById("canvas");
 let ctx = canvas.getContext("2d");
-
+let zVal=0;
 let pixelRatio = 1.5;
 canvas.width = window.innerWidth * pixelRatio;
 canvas.height = window.innerHeight * pixelRatio;
@@ -67,6 +67,7 @@ posts.addEventListener("click", function () {
   removeAllAppDiv();
 render();
   getPosts();
+  zVal=0;
 
   console.log("working?")
 
@@ -149,7 +150,6 @@ postCol.addEventListener("touch", e => {
 
 //UPLOAD CANVAS TO SERVER - DONE 
 upload.addEventListener("click", e => {
-
   //to save the image, has to use the allowTaint and useCORS from GIT: https://github.com/niklasvh/html2canvas/issues/722
   html2canvas(document.body, {
     logging: true,
@@ -181,6 +181,7 @@ upload.addEventListener("click", e => {
       removeAllAppDiv();
       getPosts();
       postCol.style.display = "grid";
+      zVal=0;
 
       // removeAllAppDiv();
     });
@@ -288,6 +289,7 @@ const input = document.querySelector('input');
 input.addEventListener("change", updateImageDisplay);
 
 
+
 function updateImageDisplay() {
   // console.log("input selected?")
   const curFiles = input.files;
@@ -301,10 +303,12 @@ function updateImageDisplay() {
         image = document.createElement('img');
         image.src = URL.createObjectURL(file);
 
+        zVal++;
         appDiv.innerHTML += `
         <img  crossorigin="anonymous"
         class="draggable" style="overflow:visible;left:${window.innerWidth / 2 + Math.random() * 50}px;
-        top:${window.innerHeight / 2 + Math.random() * 50}px;"
+        top:${window.innerHeight / 2 + Math.random() * 50}px;
+        z-index:${zVal};"
         src=${image.src} alt="">
     
         `;
@@ -347,16 +351,20 @@ function returnFileSize(number) {
 }
 */
 
+// show newly added things on top 
+
 //draw to canvas 
 let fonts = ["'Finger Paint', cursive", "'Caveat Brush', cursive", "'Finger Paint', cursive", "'Nanum Brush Script', cursive", "'Raleway Dots', cursive", "'Reenie Beanie', cursive", "'Rye', cursive", "'Vast Shadow', cursive"]
 
 
 text.addEventListener("click", function () {
+ 
+ zVal++;
   appDiv.innerHTML += `<h2 class="draggable"
   contenteditable
   style="left:${window.innerWidth / 2 + Math.random() * 50}px;
           top:${window.innerHeight / 2 + Math.random() * 50}px;
-          
+          z-index:${zVal};
           font-family:${fonts[Math.abs(norm_random(fonts.length-1).toFixed(0))]};"               
           >
   I feel ...
@@ -370,12 +378,13 @@ text.addEventListener("click", function () {
 
 text.addEventListener("touch", function () {
 
+  zVal++;
   appDiv.innerHTML += `
   <h2 class="draggable"
   contenteditable
   style="left:${window.innerWidth / 2 + Math.random() * 50}px;
           top:${window.innerHeight / 2 + Math.random() * 50}px;
-          
+          z-index:${zVal};
           font-family:${fonts[Math.abs(norm_random(fonts.length-1).toFixed(0))]};"               
           >
   I feel ...
